@@ -1,0 +1,15 @@
+.main-header {
+    background-image: url('../assets/ballfont.jpg');
+    background-size: cover;
+    background-position: center;
+
+    height: 40vh;
+}
+
+.header-title {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    font-family: Marker Felt, fantasy;
+    text-shadow: 2px 2px 2px black;
+}
