@@ -1,18 +1,16 @@
 import axios from "axios";
 import PokeCard from "../components/PokeCard";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import './PokeList.css';
 
 const PokeList = () => {
 
     const [list, setList] = useState([]);
-    const {id} = useParams();
 
     useEffect(() => {
         axios
-            .get ('https://pokeapi.co/api/v2/pokemon-form/')
+            .get ('https://pokeapi.co/api/v2/pokemon-form/?offset=0&limit=1000')
             .then((result) => setList(result.data.results))
     }, []);
 
@@ -20,9 +18,9 @@ const PokeList = () => {
 
     return (
         <div className='main-list'>
-            {list
+            {list && list
                 .map((pokemon) => 
-                    <PokeCard key={pokemon.id} {...pokemon} />
+                    <PokeCard key={pokemon.name} {...pokemon} />
                 )}
 
         </div>

@@ -5,7 +5,7 @@ import './Header.css'
 const Header = () => {
     return (
         <div className='main-header'>
-            <h1 className='header-title'>Poké World</h1>
+            <h1 className='header-title'>Pokédex</h1>
             <NavBar />
         </div>
     )
