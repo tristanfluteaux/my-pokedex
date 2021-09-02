@@ -26,11 +26,12 @@ const PokeList = () => {
     console.log(offset);
     return (
         <div className='main-list'>
-            {list && list
+            
+                {list && list
                 .map((pokemon) => 
                     <PokeCard key={pokemon.name} {...pokemon} />
                 )}
-
+            
         </div>
     )
 }
