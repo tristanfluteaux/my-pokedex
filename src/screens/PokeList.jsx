@@ -23,7 +23,10 @@ const PokeList = () => {
   }, [generation, offset, limit]);
 
   function setGen(genNumber) {
-    setGeneration(genNumber);
+    if (genNumber !== generation) {
+      setList([]);
+      setGeneration(genNumber);
+    }
   }
 
   return (
@@ -38,8 +41,9 @@ const PokeList = () => {
         <button onClick={() => setGen(7)}>gen7</button>
         <button onClick={() => setGen(8)}>gen8</button>
       </div>
-      {list &&
-        list.map((pokemon) => <PokeCard key={pokemon.name} {...pokemon} />)}
+      {list.map((pokemon) => (
+        <PokeCard key={pokemon.name} {...pokemon} />
+      ))}
     </div>
   );
 };
