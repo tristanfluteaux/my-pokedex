@@ -13,7 +13,7 @@ const PokeDetails = () => {
         axios
             .get(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
             .then((res) => (res.data))
-    }, [])
+    })
 
     
     return (

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import PokeList from "../screens/PokeList";
+// import PokeList from "../screens/PokeList";
 
 const NavBar = () => {
     return (

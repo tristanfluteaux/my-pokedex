@@ -14,7 +14,7 @@ const PokeCard = ({name, url}) => {
         axios
             .get (url)
             .then((result) => setPokemon(result.data))
-    }, []);
+    });
 
     return (
         <div>
@@ -22,7 +22,7 @@ const PokeCard = ({name, url}) => {
                 <h2>{name}</h2>
                     {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
                     <img src={pokemon.sprites.front_default} alt={name} />
-                    ) : (<img src={defaultPicture}/>)}
+                    ) : (<img src={defaultPicture} alt="default"/>)}
             </NavLink>
         </div>
     )
