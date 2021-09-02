@@ -1,0 +1,29 @@
+.card{
+    height: 20vh;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    border: solid 1.5px;
+    border-color: rgb(136, 132, 100);
+    box-shadow: 3px 3px 5px 1px grey;
+    height: 40%;
+    width: 110px;
+    background: linear-gradient(rgb(36, 187, 36), rgb(182, 236, 182));
+     
+}
+
+
+.card-link {
+    text-decoration: none;
+}
+
+.card-name {
+    color: black;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-img {
+    width: 100%;
+}
