@@ -15,7 +15,6 @@ const PokeCard = ({name, url}) => {
             .get (url)
             .then((result) => setPokemon(result.data))
     }, []);
-    console.log(pokemon)
 
     return (
         <div>
