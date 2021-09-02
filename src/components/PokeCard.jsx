@@ -19,14 +19,20 @@ const PokeCard = ({ name, url }) => {
   });
 
   return (
-    <div>
-      <NavLink path to="/pokemon/:id">
-        <h2>{name}</h2>
+    <div className="card">
+      <NavLink path to="/pokemon/:id" className="card-link">
+        <h2>{pokemon.id}</h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
-          <img src={pokemon.sprites.front_default} alt={name} />
+          <img
+            className="card-img"
+            src={pokemon.sprites.front_default}
+            alt={name}
+          />
         ) : (
-          <img src={defaultPicture} alt="default" />
+          <img src={defaultPicture} />
         )}
+        <h2 className="card-name">{name}</h2>
+        <div className="card-bar"></div>
       </NavLink>
     </div>
   );
