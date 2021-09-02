@@ -6,22 +6,18 @@ import PokeCardDetails from "../components/PokeCardDetails";
 
 const PokeDetails = () => {
 
-    const [details, setDetails] = useState([]);
+    const [details, setDetails] = useState();
     const {id} = useParams();
 
     useEffect(() => {
         axios
             .get(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
-            .then((res) => (res.data))
-    })
+            .then((res) => setDetails(res.data))
+    }, []);
 
-    
     return (
         <div>
-            {details
-                    .map((elem) => <PokeCardDetails {...elem} />)
-            }
-            
+            {details && <PokeCardDetails details={details}/>}
         </div>
     )
 }

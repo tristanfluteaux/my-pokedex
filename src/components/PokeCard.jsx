@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
 
+
 import "./PokeCard.css";
 
 const PokeCard = ({ name, url }) => {
@@ -20,7 +21,7 @@ const PokeCard = ({ name, url }) => {
 
   return (
     <div className="card">
-      <NavLink path to="/pokemon/:id" className="card-link">
+      <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
         <h2>{pokemon.id}</h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img

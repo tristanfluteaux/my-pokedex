@@ -30,21 +30,23 @@ const PokeList = () => {
   }
 
   return (
-    <div className="main-list">
-      <div>
-        <button onClick={() => setGen(1)}>gen1</button>
-        <button onClick={() => setGen(2)}>gen2</button>
-        <button onClick={() => setGen(3)}>gen3</button>
-        <button onClick={() => setGen(4)}>gen4</button>
-        <button onClick={() => setGen(5)}>gen5</button>
-        <button onClick={() => setGen(6)}>gen6</button>
-        <button onClick={() => setGen(7)}>gen7</button>
-        <button onClick={() => setGen(8)}>gen8</button>
+    <>
+      <div className='list-button'>
+        <button className='gen-button' onClick={() => setGen(1)}>Kanto</button>
+        <button className='gen-button' onClick={() => setGen(2)}>Johto</button>
+        <button className='gen-button' onClick={() => setGen(3)}>Hoenn</button>
+        <button className='gen-button' onClick={() => setGen(4)}>Sinnoh</button>
+        <button className='gen-button' onClick={() => setGen(5)}>Unys</button>
+        <button className='gen-button' onClick={() => setGen(6)}>Kalos</button>
+        <button className='gen-button' onClick={() => setGen(7)}>Alola</button>
+        <button className='gen-button' onClick={() => setGen(8)}>Galar</button>
       </div>
+    <div className="main-list">
       {list.map((pokemon) => (
         <PokeCard key={pokemon.name} {...pokemon} />
       ))}
     </div>
+  </>
   );
 };
 
