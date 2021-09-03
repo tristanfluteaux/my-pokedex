@@ -9,6 +9,7 @@ const PokeList = () => {
   const [limit, setLimit] = useState(0);
   const [offset, setOffset] = useState(0);
   const [list, setList] = useState([]);
+  const [shiny, setShiny] = useState(true);
 
   useEffect(() => {
     axios
@@ -20,13 +21,17 @@ const PokeList = () => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
       .then((result) => setList(result.data.results));
-  }, [generation, offset, limit]);
+  }, [generation, offset, limit ,shiny]);
 
   function setGen(genNumber) {
     if (genNumber !== generation) {
       setList([]);
       setGeneration(genNumber);
     }
+  }
+
+  function getShiny() {
+    setShiny(!shiny)
   }
 
   return (
@@ -56,10 +61,13 @@ const PokeList = () => {
         <button className="gen-button" onClick={() => setGen(8)}>
           Galar
         </button>
+        <button className="shiny-button" onClick={() => getShiny()}>
+          Shiny
+        </button>
       </div>
-      <div className="main-list">
+      <div className={`main-list ${shiny ? "" : "list-background"}`}>
         {list.map((pokemon) => (
-          <PokeCard key={pokemon.name} {...pokemon} />
+          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny}/>
         ))}
       </div>
     </>

@@ -5,7 +5,7 @@ import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
 
 import "./PokeCard.css";
 
-const PokeCard = ({ name, url }) => {
+const PokeCard = ({ name, url, shiny }) => {
   const [pokemon, setPokemon] = useState({});
   const [type, setType] = useState("");
 
@@ -34,7 +34,7 @@ const PokeCard = ({ name, url }) => {
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img
             className="card-img"
-            src={pokemon.sprites.front_default}
+            src={shiny ? pokemon.sprites.front_default : pokemon.sprites.front_shiny}
             alt={name}
           />
         ) : (
