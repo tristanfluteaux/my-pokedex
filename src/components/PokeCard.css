@@ -1,29 +1,98 @@
-.card{
-    height: 20vh;
-    padding: 5px;
-    border-radius: 10px;
-    margin: 10px;
-    border: solid 1.5px;
-    border-color: rgb(136, 132, 100);
-    box-shadow: 3px 3px 5px 1px grey;
-    height: 150px;
-    width: 110px;
-    background: linear-gradient(rgb(36, 187, 36), rgb(182, 236, 182));
-     
+.card {
+  height: 20vh;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+  border: solid 1.5px;
+  border-color: rgb(136, 132, 100);
+  box-shadow: 3px 3px 5px 1px grey;
+  height: 150px;
+  width: 110px;
 }
 
-
 .card-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .card-name {
-    color: black;
-    font-size: 15px;
-    margin-bottom: 10px;
-    text-align: center;
+  color: black;
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .card-img {
-    width: 100%;
+  width: 100%;
+}
+
+.grass {
+  background: linear-gradient(rgb(100, 190, 90), rgb(151, 236, 118));
+}
+
+.fire {
+  background: linear-gradient(rgb(255, 160, 85), rgb(233, 221, 61));
+}
+
+.water {
+  background: linear-gradient(rgb(80, 145, 215), rgb(21, 129, 201));
+}
+
+.bug {
+  background: linear-gradient(rgb(145, 195, 45), rgb(193, 226, 170));
+}
+
+.dark {
+  background: linear-gradient(rgb(90, 85, 100), rgb(82, 64, 49));
+}
+
+.dragon {
+  background: linear-gradient(rgb(5, 110, 195), rgb(21, 129, 201));
+}
+
+.electric {
+  background: linear-gradient(rgb(245, 210, 60), rgb(21, 129, 201));
+}
+
+.fairy {
+  background: linear-gradient(rgb(235, 145, 230), rgb(21, 129, 201));
+}
+
+.fighting {
+  background: linear-gradient(rgb(205, 65, 110), rgb(21, 129, 201));
+}
+
+.flying {
+  background: linear-gradient(rgb(145, 170, 225), rgb(21, 129, 201));
+}
+
+.ghost {
+  background: linear-gradient(rgb(80, 105, 175), rgb(21, 129, 201));
+}
+
+.ground {
+  background: linear-gradient(rgb(220, 120, 70), rgb(21, 129, 201));
+}
+
+.ice {
+  background: linear-gradient(rgb(115, 205, 195), rgb(21, 129, 201));
+}
+
+.normal {
+  background: linear-gradient(rgb(145, 155, 165), rgb(21, 129, 201));
+}
+
+.poison {
+  background: linear-gradient(rgb(170, 105, 200), rgb(21, 129, 201));
+}
+
+.psychic {
+  background: linear-gradient(rgb(250, 115, 120), rgb(21, 129, 201));
+}
+
+.rock {
+  background: linear-gradient(rgb(200, 185, 140), rgb(21, 129, 201));
+}
+
+.steel {
+  background: linear-gradient(rgb(90, 145, 165), rgb(21, 129, 201));
 }

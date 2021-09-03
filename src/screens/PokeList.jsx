@@ -31,22 +31,38 @@ const PokeList = () => {
 
   return (
     <>
-      <div className='list-button'>
-        <button className='gen-button' onClick={() => setGen(1)}>Kanto</button>
-        <button className='gen-button' onClick={() => setGen(2)}>Johto</button>
-        <button className='gen-button' onClick={() => setGen(3)}>Hoenn</button>
-        <button className='gen-button' onClick={() => setGen(4)}>Sinnoh</button>
-        <button className='gen-button' onClick={() => setGen(5)}>Unys</button>
-        <button className='gen-button' onClick={() => setGen(6)}>Kalos</button>
-        <button className='gen-button' onClick={() => setGen(7)}>Alola</button>
-        <button className='gen-button' onClick={() => setGen(8)}>Galar</button>
+      <div className="list-button">
+        <button className="gen-button" onClick={() => setGen(1)}>
+          Kanto
+        </button>
+        <button className="gen-button" onClick={() => setGen(2)}>
+          Johto
+        </button>
+        <button className="gen-button" onClick={() => setGen(3)}>
+          Hoenn
+        </button>
+        <button className="gen-button" onClick={() => setGen(4)}>
+          Sinnoh
+        </button>
+        <button className="gen-button" onClick={() => setGen(5)}>
+          Unys
+        </button>
+        <button className="gen-button" onClick={() => setGen(6)}>
+          Kalos
+        </button>
+        <button className="gen-button" onClick={() => setGen(7)}>
+          Alola
+        </button>
+        <button className="gen-button" onClick={() => setGen(8)}>
+          Galar
+        </button>
       </div>
-    <div className="main-list">
-      {list.map((pokemon) => (
-        <PokeCard key={pokemon.name} {...pokemon} />
-      ))}
-    </div>
-  </>
+      <div className="main-list">
+        {list.map((pokemon) => (
+          <PokeCard key={pokemon.name} {...pokemon} />
+        ))}
+      </div>
+    </>
   );
 };
 
