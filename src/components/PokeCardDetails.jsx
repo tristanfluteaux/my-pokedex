@@ -1,16 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
 import './PokeCardDetails.css'
 
 const PokeCardDetails = ({details}) => {
     const [evolve, setEvole] = useState([]);
-    const {id} = useParams();
 
     useEffect(() => {
         axios
-            .get(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
-            .then((res) => setEvole(res.data))      
+            .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
+            .then((res) => console.log(res.data))      
     },[]);
 
     return (
