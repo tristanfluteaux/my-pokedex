@@ -26,73 +26,73 @@
 }
 
 .grass {
-  background: linear-gradient(rgb(100, 190, 90), rgb(151, 236, 118));
+  background: linear-gradient(rgb(100, 190, 90), 65%, rgb(215, 245, 0));
 }
 
 .fire {
-  background: linear-gradient(rgb(255, 160, 85), rgb(233, 221, 61));
+  background: linear-gradient(rgb(255, 160, 85), 65%, rgb(245, 240, 40));
 }
 
 .water {
-  background: linear-gradient(rgb(80, 145, 215), rgb(21, 129, 201));
+  background: linear-gradient(rgb(80, 145, 215), 65%, rgb(75, 220, 230));
 }
 
 .bug {
-  background: linear-gradient(rgb(145, 195, 45), rgb(193, 226, 170));
+  background: linear-gradient(rgb(145, 195, 45), 65%, rgb(105, 110, 0));
 }
 
 .dark {
-  background: linear-gradient(rgb(90, 85, 100), rgb(82, 64, 49));
+  background: linear-gradient(rgb(90, 85, 100), 65%, rgb(82, 64, 49));
 }
 
 .dragon {
-  background: linear-gradient(rgb(5, 110, 195), rgb(21, 129, 201));
+  background: linear-gradient(rgb(5, 110, 195), 65%, rgb(130, 115, 240));
 }
 
 .electric {
-  background: linear-gradient(rgb(245, 210, 60), rgb(21, 129, 201));
+  background: linear-gradient(rgb(245, 210, 60), 65%, rgb(245, 245, 185));
 }
 
 .fairy {
-  background: linear-gradient(rgb(235, 145, 230), rgb(21, 129, 201));
+  background: linear-gradient(rgb(235, 145, 230), 65%, rgb(245, 225, 230));
 }
 
 .fighting {
-  background: linear-gradient(rgb(205, 65, 110), rgb(21, 129, 201));
+  background: linear-gradient(rgb(205, 65, 110), 65%, rgb(215, 185, 100));
 }
 
 .flying {
-  background: linear-gradient(rgb(145, 170, 225), rgb(21, 129, 201));
+  background: linear-gradient(rgb(145, 170, 225), 65%, white);
 }
 
 .ghost {
-  background: linear-gradient(rgb(80, 105, 175), rgb(21, 129, 201));
+  background: linear-gradient(rgb(80, 105, 175), 65%, rgb(125, 160, 200));
 }
 
 .ground {
-  background: linear-gradient(rgb(220, 120, 70), rgb(21, 129, 201));
+  background: linear-gradient(rgb(220, 120, 70), 65%, rgb(200, 185, 140));
 }
 
 .ice {
-  background: linear-gradient(rgb(115, 205, 195), rgb(21, 129, 201));
+  background: linear-gradient(rgb(115, 205, 195), 65%, rgb(205, 235, 245));
 }
 
 .normal {
-  background: linear-gradient(rgb(145, 155, 165), rgb(21, 129, 201));
+  background: linear-gradient(rgb(145, 155, 165), 65%, rgb(225, 225, 225));
 }
 
 .poison {
-  background: linear-gradient(rgb(170, 105, 200), rgb(21, 129, 201));
+  background: linear-gradient(rgb(170, 105, 200), 65%, rgb(80, 145, 215));
 }
 
 .psychic {
-  background: linear-gradient(rgb(250, 115, 120), rgb(21, 129, 201));
+  background: linear-gradient(rgb(250, 115, 120), 65%, rgb(175, 95, 180));
 }
 
 .rock {
-  background: linear-gradient(rgb(200, 185, 140), rgb(21, 129, 201));
+  background: linear-gradient(rgb(200, 185, 140), 65%, rgb(100, 100, 100));
 }
 
 .steel {
-  background: linear-gradient(rgb(90, 145, 165), rgb(21, 129, 201));
+  background: linear-gradient(rgb(90, 145, 165), 65%, rgb(200, 200, 200));
 }
