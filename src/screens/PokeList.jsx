@@ -21,7 +21,7 @@ const PokeList = () => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
       .then((result) => setList(result.data.results));
-  }, [generation, offset, limit ,shiny]);
+  }, [generation, offset, limit, shiny]);
 
   function setGen(genNumber) {
     if (genNumber !== generation) {
@@ -31,7 +31,7 @@ const PokeList = () => {
   }
 
   function getShiny() {
-    setShiny(!shiny)
+    setShiny(!shiny);
   }
 
   return (
@@ -67,7 +67,7 @@ const PokeList = () => {
       </div>
       <div className={`main-list ${shiny ? "" : "list-background"}`}>
         {list.map((pokemon) => (
-          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny}/>
+          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny} />
         ))}
       </div>
     </>

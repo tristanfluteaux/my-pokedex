@@ -14,12 +14,18 @@
   text-decoration: none;
 }
 
+.card-number {
+  color: black;
+  font-family: "pokemonGB";
+}
+
 .card-name {
   color: black;
   font-size: 11px;
   margin-bottom: 10px;
   text-align: center;
   font-family: "pokemonGB";
+  font-weight: bold;
 }
 
 .card-img {
