@@ -13,6 +13,10 @@
   padding: 10px;
 }
 
+.details-img {
+  width: 100px;
+}
+
 .details-grass {
   background: linear-gradient(
     white,
