@@ -14,12 +14,7 @@ const PokeCard = ({ name, url, shiny }) => {
     axios.get(url).then((result) => {
       if (isMounted) {
         setPokemon(result.data);
-        setType(
-          result.data.types[0].type.name
-          // + (result.data.types.length === 2
-          // ? "-" + result.data.types[1].type.name
-          // : "")
-        );
+        setType(result.data.types[0].type.name);
       }
     });
     return () => {
@@ -34,11 +29,15 @@ const PokeCard = ({ name, url, shiny }) => {
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img
             className="card-img"
-            src={shiny ? pokemon.sprites.front_default : pokemon.sprites.front_shiny}
+            src={
+              shiny
+                ? pokemon.sprites.front_default
+                : pokemon.sprites.front_shiny
+            }
             alt={name}
           />
         ) : (
-          <img src={defaultPicture} />
+          <img className="card-img-default" src={defaultPicture} />
         )}
         <h2 className="card-name">{name}</h2>
         <div className="card-bar"></div>
