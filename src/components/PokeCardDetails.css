@@ -38,16 +38,29 @@
     white,
     10%,
     rgb(100, 190, 90),
-    rgb(151, 236, 118)
+    65%,
+    rgb(215, 245, 0)
   );
 }
 
 .details-fire {
-  background: linear-gradient(white, 10%, rgb(255, 160, 85), rgb(233, 221, 61));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(255, 160, 85),
+    65%,
+    rgb(245, 240, 40)
+  );
 }
 
 .details-water {
-  background: linear-gradient(white, 10%, rgb(80, 145, 215), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(80, 145, 215),
+    65%,
+    rgb(75, 220, 230)
+  );
 }
 
 .details-bug {
@@ -55,20 +68,39 @@
     white,
     10%,
     rgb(145, 195, 45),
-    rgb(193, 226, 170)
+    65%,
+    rgb(105, 110, 0)
   );
 }
 
 .details-dark {
-  background: linear-gradient(white, 10%, rgb(90, 85, 100), rgb(82, 64, 49));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(90, 85, 100),
+    65%,
+    rgb(82, 64, 49)
+  );
 }
 
 .details-dragon {
-  background: linear-gradient(white, 10%, rgb(5, 110, 195), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(5, 110, 195),
+    65%,
+    rgb(130, 115, 240)
+  );
 }
 
 .details-electric {
-  background: linear-gradient(white, 10%, rgb(245, 210, 60), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(245, 210, 60),
+    65%,
+    rgb(245, 245, 185)
+  );
 }
 
 .details-fairy {
@@ -76,29 +108,43 @@
     white,
     10%,
     rgb(235, 145, 230),
-    rgb(21, 129, 201)
+    65%,
+    rgb(245, 225, 230)
   );
 }
 
 .details-fighting {
-  background: linear-gradient(white, 10%, rgb(205, 65, 110), rgb(21, 129, 201));
-}
-
-.details-flying {
   background: linear-gradient(
     white,
     10%,
-    rgb(145, 170, 225),
-    rgb(21, 129, 201)
+    rgb(205, 65, 110),
+    65%,
+    rgb(215, 185, 100)
   );
 }
 
+.details-flying {
+  background: linear-gradient(white, 10%, rgb(145, 170, 225), 65%, white);
+}
+
 .details-ghost {
-  background: linear-gradient(white, 10%, rgb(80, 105, 175), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(80, 105, 175),
+    65%,
+    rgb(125, 160, 200)
+  );
 }
 
 .details-ground {
-  background: linear-gradient(white, 10%, rgb(220, 120, 70), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(220, 120, 70),
+    65%,
+    rgb(200, 185, 140)
+  );
 }
 
 .details-ice {
@@ -106,7 +152,8 @@
     white,
     10%,
     rgb(115, 205, 195),
-    rgb(21, 129, 201)
+    65%,
+    rgb(205, 235, 245)
   );
 }
 
@@ -115,7 +162,8 @@
     white,
     10%,
     rgb(145, 155, 165),
-    rgb(21, 129, 201)
+    65%,
+    rgb(225, 225, 225)
   );
 }
 
@@ -124,7 +172,8 @@
     white,
     10%,
     rgb(170, 105, 200),
-    rgb(21, 129, 201)
+    65%,
+    rgb(80, 145, 215)
   );
 }
 
@@ -133,7 +182,8 @@
     white,
     10%,
     rgb(250, 115, 120),
-    rgb(21, 129, 201)
+    65%,
+    rgb(175, 95, 180)
   );
 }
 
@@ -142,10 +192,17 @@
     white,
     10%,
     rgb(200, 185, 140),
-    rgb(21, 129, 201)
+    65%,
+    rgb(100, 100, 100)
   );
 }
 
 .details-steel {
-  background: linear-gradient(white, 10%, rgb(90, 145, 165), rgb(21, 129, 201));
+  background: linear-gradient(
+    white,
+    10%,
+    rgb(90, 145, 165),
+    65%,
+    rgb(200, 200, 200)
+  );
 }
