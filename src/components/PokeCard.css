@@ -16,9 +16,10 @@
 
 .card-name {
   color: black;
-  font-size: 15px;
+  font-size: 11px;
   margin-bottom: 10px;
   text-align: center;
+  font-family: "pokemonGB";
 }
 
 .card-img {
