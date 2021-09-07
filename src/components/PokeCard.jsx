@@ -22,10 +22,6 @@ const PokeCard = ({ name, url, shiny }) => {
     };
   }, []);
 
-  function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
   return (
     <div className={`card ${type}`}>
       <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
@@ -43,7 +39,7 @@ const PokeCard = ({ name, url, shiny }) => {
         ) : (
           <img className="card-img-default" src={defaultPicture} />
         )}
-        <h2 className="card-name">{capitalizeFirstLetter(name)}</h2>
+        <h2 className="card-name">{name.toUpperCase()}</h2>
         <div className="card-bar"></div>
       </NavLink>
     </div>

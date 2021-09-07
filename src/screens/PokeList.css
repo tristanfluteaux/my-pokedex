@@ -1,38 +1,47 @@
 .main-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    
-    }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-    .list-background {
-        background: linear-gradient(white, red, orange, yellow, lightgreen, lightblue, pink);
-    }
+.list-background {
+  background: linear-gradient(
+    white,
+    red,
+    orange,
+    yellow,
+    lightgreen,
+    lightblue,
+    pink
+  );
+}
 
-    .list-button {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 100%;
-        margin-bottom: 40px;
-    }
+.list-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 40px;
+}
 
-    .gen-button {
-        width: 80px;
-        height: 40px;
-        font-size: 20px;
-        color:black;
-        border-radius: 5px;
-        background : linear-gradient(165deg, grey, white, grey)
-    }
+.gen-button {
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  font-family: "pokemonGB";
+  color: black;
+  border-radius: 5px;
+  background: linear-gradient(165deg, grey, white, grey);
+}
 
-    .shiny-button {
-        width: 80px;
-        height: 40px;
-        font-size: 20px;
-        background : linear-gradient(165deg, orange, yellow, orange);
-        border-radius: 5px;
-        color:black;
-    }
+.shiny-button {
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  font-family: "pokemonGB";
+  background: linear-gradient(165deg, orange, yellow, orange);
+  border-radius: 5px;
+  color: black;
+}

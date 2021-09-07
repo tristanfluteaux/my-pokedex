@@ -25,7 +25,7 @@
   margin-bottom: 10px;
   text-align: center;
   font-family: "pokemonGB";
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .card-img {

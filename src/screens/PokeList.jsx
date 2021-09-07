@@ -38,31 +38,31 @@ const PokeList = () => {
     <>
       <div className="list-button">
         <button className="gen-button" onClick={() => setGen(1)}>
-          Kanto
+          KANTO
         </button>
         <button className="gen-button" onClick={() => setGen(2)}>
-          Johto
+          JOHTO
         </button>
         <button className="gen-button" onClick={() => setGen(3)}>
-          Hoenn
+          HOENN
         </button>
         <button className="gen-button" onClick={() => setGen(4)}>
-          Sinnoh
+          SINNOH
         </button>
         <button className="gen-button" onClick={() => setGen(5)}>
-          Unys
+          UNYS
         </button>
         <button className="gen-button" onClick={() => setGen(6)}>
-          Kalos
+          KALOS
         </button>
         <button className="gen-button" onClick={() => setGen(7)}>
-          Alola
+          ALOLA
         </button>
         <button className="gen-button" onClick={() => setGen(8)}>
-          Galar
+          GALAR
         </button>
         <button className="shiny-button" onClick={() => getShiny()}>
-          Shiny
+          SHINY
         </button>
       </div>
       <div className={`main-list ${shiny ? "" : "list-background"}`}>
