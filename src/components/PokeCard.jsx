@@ -37,7 +37,11 @@ const PokeCard = ({ name, url, shiny }) => {
             alt={name}
           />
         ) : (
-          <img className="card-img-default" src={defaultPicture} />
+          <img
+            className="card-img-default"
+            src={defaultPicture}
+            alt="default"
+          />
         )}
         <h2 className="card-name">{name.toUpperCase()}</h2>
         <div className="card-bar"></div>

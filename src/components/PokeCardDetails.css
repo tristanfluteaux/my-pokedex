@@ -1,6 +1,10 @@
 .details-card {
   padding-top: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .details-name {
@@ -14,6 +18,18 @@
 }
 
 .details-img {
+  width: 100px;
+}
+
+.types {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.type {
   width: 100px;
 }
 
