@@ -10,9 +10,12 @@ const PokeDetails = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        axios
-            .get(`https://pokeapi.co/api/v2/pokemon-form/${id}`)
-            .then((res) => setDetails(res.data))
+        const getDetails = () => {
+            axios
+                .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                .then((res) => setDetails(res.data))
+        }
+        getDetails();
     }, []);
 
     return (

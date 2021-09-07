@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { withRouter } from 'react-router';
+
 import './PokeCardDetails.css'
 
 const PokeCardDetails = ({details}) => {
@@ -8,25 +10,33 @@ const PokeCardDetails = ({details}) => {
     useEffect(() => {
         axios
             .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
-            .then((res) => console.log(res.data))      
+            .then((res) =>(res.data.chain.evolves_to[0]))      
     },[]);
 
+    console.log(details)
     return (
         <>
-            <div className='details-card'>
-                <h2>{details.name}</h2>
-                <div className='details-img'>
-                 <img src={details.sprites.front_default} alt="front_default"/>
-                 <img src={details.sprites.front_shiny} alt="back_female"/>
-                 <img src={details.sprites.back_default} alt="back_default"/>
-                 <img src={details.sprites.back_shiny} alt="back_female"/>
-                </div>
-                <div>
-                    <p>type 1: {details.types[0].type.name}</p>
-                    {details.types.length === 2 &&
-                        <p>type 2: {details.types[1].type.name}</p>
-                    }
-                </div>
+            <div className={`details-card ${details.types[0].type.name}`}>
+                <h2 className='details-name'>{details.name}</h2>
+                    <div className='details-img'>
+                        <img className='details-gif' src={details.sprites.versions["generation-v"]["black-white"].animated.front_default} alt="front default"/>
+                        <img className='details-gif' src={details.sprites.versions["generation-v"]["black-white"].animated.back_default} alt="back default"/>
+                        <img className='details-gif' src={details.sprites.versions["generation-v"]["black-white"].animated.front_shiny} alt="front shiny"/>
+                        <img className='details-gif' src={details.sprites.versions["generation-v"]["black-white"].animated.back_shiny} alt="back shiny"/>
+                    </div>
+                    <div className='details-tall'>
+                        <p>Height : {details.height / 10} m</p>
+                        <p>Weight : {details.weight / 10} kg</p>
+                    </div>
+                    <div className='types'>
+                        <p>Type 1: {details.types[0].type.name}</p>
+                        {details.types.length === 2 &&
+                        <p>Type 2: {details.types[1].type.name}</p>}
+                    </div>
+                    <div className='stats'>
+                        <p>Stats :</p>
+                            {details.stats.map((value) => (<p>{value.stat.name}: {value.base_stat}</p>))}
+                    </div>
             </div>
         </>
     )
