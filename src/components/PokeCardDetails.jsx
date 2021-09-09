@@ -25,6 +25,7 @@ import "./PokeCardDetails.css";
 
 const PokeCardDetails = ({ details }) => {
   const [evolve, setEvole] = useState([]);
+  const [text, setText] = useState("");
   const type1 = details.types[0].type.name;
   const type2 =
     details.types.length === 2 ? details.types[1].type.name : undefined;
@@ -50,11 +51,19 @@ const PokeCardDetails = ({ details }) => {
   };
 
   useEffect(() => {
+    // axios
+    // .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
+    // .then((res) => res.data.chain.evolves_to[0]);
     axios
-      .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
-      .then((res) => res.data.chain.evolves_to[0]);
+      .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
+      .then((res) =>
+        setText(
+          res.data.flavor_text_entries[0].flavor_text.replace(/\f|\n/g, " ")
+        )
+      );
   }, []);
 
+  console.log(text);
   return (
     <div className={`details-card ${"details-" + type1}`}>
       <h2 className="details-name">{details.name.toUpperCase()}</h2>
@@ -135,6 +144,9 @@ const PokeCardDetails = ({ details }) => {
       <div className="types">
         <img className="type" src={typeArray[type1]} alt={type1} />
         {type2 && <img className="type" src={typeArray[type2]} alt={type2} />}
+      </div>
+      <div className="details-text">
+        <p>{text}</p>
       </div>
       <div className="details-tall">
         <p>Height : {details.height / 10} m</p>
