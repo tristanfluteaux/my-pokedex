@@ -58,107 +58,118 @@ const PokeCardDetails = ({ details }) => {
       .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
       .then((res) =>
         setText(
-          res.data.flavor_text_entries[0].flavor_text.replace(/\f|\n/g, " ")
+          res.data.flavor_text_entries[0].flavor_text
+            .replace(/\f|\n/g, " ")
+            .replace("POKéMON", "pokémon")
         )
       );
   }, []);
 
-  console.log(text);
   return (
     <div className={`details-card ${"details-" + type1}`}>
-      <h2 className="details-name">{details.name.toUpperCase()}</h2>
-      <div className="details-sprites">
-        {details.sprites.versions["generation-v"]["black-white"].animated
-          .front_default ? (
-          <>
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .front_default
-              }
-              alt="front default"
-            />
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .back_default
-              }
-              alt="back default"
-            />
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .front_shiny
-              }
-              alt="front shiny"
-            />
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .back_shiny
-              }
-              alt="back shiny"
-            />
-          </>
-        ) : (
-          <>
-            <img
-              className="details-img"
-              src={
-                details.sprites.versions["generation-v"]["black-white"]
-                  .front_default || defaultPicture
-              }
-              alt="front default"
-            />
-            <img
-              className="details-img"
-              src={
-                details.sprites.versions["generation-v"]["black-white"]
-                  .back_default || defaultPicture
-              }
-              alt="back default"
-            />
-            <img
-              className="details-img"
-              src={
-                details.sprites.versions["generation-v"]["black-white"]
-                  .front_shiny || defaultPicture
-              }
-              alt="front shiny"
-            />
-            <img
-              className="details-img"
-              src={
-                details.sprites.versions["generation-v"]["black-white"]
-                  .back_shiny || defaultPicture
-              }
-              alt="back shiny"
-            />
-          </>
-        )}
+      <div className="details-primary-container">
+        <div className="details-primary">
+          <h2 className="details-name">
+            {details.name.toUpperCase()} N.{("00" + details.id).slice(-3)}
+          </h2>
+          <div className="details-sprites">
+            {details.sprites.versions["generation-v"]["black-white"].animated
+              .front_default ? (
+              <>
+                <img
+                  className="details-gif"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .animated.front_default
+                  }
+                  alt="front default"
+                />
+                <img
+                  className="details-gif"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .animated.back_default
+                  }
+                  alt="back default"
+                />
+                <img
+                  className="details-gif"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .animated.front_shiny
+                  }
+                  alt="front shiny"
+                />
+                <img
+                  className="details-gif"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .animated.back_shiny
+                  }
+                  alt="back shiny"
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  className="details-img"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .front_default || defaultPicture
+                  }
+                  alt="front default"
+                />
+                <img
+                  className="details-img"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .back_default || defaultPicture
+                  }
+                  alt="back default"
+                />
+                <img
+                  className="details-img"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .front_shiny || defaultPicture
+                  }
+                  alt="front shiny"
+                />
+                <img
+                  className="details-img"
+                  src={
+                    details.sprites.versions["generation-v"]["black-white"]
+                      .back_shiny || defaultPicture
+                  }
+                  alt="back shiny"
+                />
+              </>
+            )}
+          </div>
+          <div className="types">
+            <img className="type" src={typeArray[type1]} alt={type1} />
+            {type2 && (
+              <img className="type" src={typeArray[type2]} alt={type2} />
+            )}
+          </div>
+          <div className="details-text">
+            <p>{text}</p>
+          </div>
+        </div>
       </div>
-      <div className="types">
-        <img className="type" src={typeArray[type1]} alt={type1} />
-        {type2 && <img className="type" src={typeArray[type2]} alt={type2} />}
-      </div>
-      <div className="details-text">
-        <p>{text}</p>
-      </div>
-      <div className="details-tall">
-        <p>Height : {details.height / 10} m</p>
-        <p>Weight : {details.weight / 10} kg</p>
-      </div>
-      <div className="stats">
-        <p>Stats :</p>
-        {details.stats.map((value) => (
-          <p>
-            {value.stat.name}: {value.base_stat}
-          </p>
-        ))}
+      <div className="details-data">
+        <div className="details-size">
+          <p>Height: {details.height / 10} m</p>
+          <p>Weight: {details.weight / 10} kg</p>
+        </div>
+        <div className="stats">
+          <p>Stats :</p>
+          {details.stats.map((value) => (
+            <p>
+              {value.stat.name}: {value.base_stat}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

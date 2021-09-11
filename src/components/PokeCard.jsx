@@ -25,7 +25,7 @@ const PokeCard = ({ name, url, shiny }) => {
   return (
     <div className={`card ${type}`}>
       <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
-        <h2 className="card-number">{pokemon.id}</h2>
+        <h2 className="card-number">{("00" + pokemon.id).slice(-3)}</h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img
             className="card-img"
