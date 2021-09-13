@@ -54,7 +54,7 @@
   align-items: center;
   justify-content: space-between;
   width: 50%;
-  height: 250px;
+  min-height: 250px;
 }
 
 .details-size {
