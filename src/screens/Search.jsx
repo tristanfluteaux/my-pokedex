@@ -1,9 +1,53 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
+import '../components/Header.css';
 
 const Search = () => {
+
+    const [searchValue, setSearchValue] = useState('');
+    const [name, setName] = useState([]);
+
+    useEffect(() => {
+        const getSearch = () => {
+        axios
+            .get('https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0')
+            .then((res) => setName(res.data.results))
+        }
+        getSearch();
+    }, [searchValue])
+
+    const handleChange = (event) => {
+        setSearchValue(event.target.value)
+    };
+
     return (
-        <div>
-            
+        <div className='parents-search'>
+            <input
+            value={searchValue}
+            onChange={handleChange}
+            type='text'
+            placeholder='Search a Pokemon ?'
+            id='search-input'
+            />
+
+            <div className='search-result'>
+                <ul className='result-ul'>
+                {searchValue && name && 
+                name
+                .filter(word => word.name.match(searchValue))
+                .map((poke) => (
+                <li key={poke.name}>
+                    <NavLink
+                    className='suggest'
+                    to={`/pokemon/${poke.url.split('/')[6]}`}>
+                    {poke.name}
+                    </NavLink>
+                </li>
+                ))}
+                </ul>
+            </div>
         </div>
     )
 }

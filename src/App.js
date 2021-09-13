@@ -17,12 +17,12 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route exact path="/pokelist">
+        {/* <Route exact path="/pokelist">
           <PokeList />
         </Route>
         <Route exact path ='/search'>
           <Search />
-        </Route>
+        </Route> */}
         <Route path='/pokemon/:id'>
           <PokeDetails />
         </Route>
