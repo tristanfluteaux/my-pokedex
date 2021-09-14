@@ -20,28 +20,29 @@ import flying from "../assets/pokemon_types_png/pokemon_flying.png";
 import fighting from "../assets/pokemon_types_png/pokemon_fighting.png";
 import normal from "../assets/pokemon_types_png/pokemon_normal.png";
 import poison from "../assets/pokemon_types_png/pokemon_poison.png";
-import RadarChart from 'react-svg-radar-chart';
-import 'react-svg-radar-chart/build/css/index.css'
+import RadarChart from "react-svg-radar-chart";
+import "react-svg-radar-chart/build/css/index.css";
 
 import "./PokeCardDetails.css";
 
 const PokeCardDetails = ({ details }) => {
   // const [evolve, setEvole] = useState([]);
   const [text, setText] = useState("");
+  const [isShiny, setIsShiny] = useState(false);
   const type1 = details.types[0].type.name;
   const type2 =
     details.types.length === 2 ? details.types[1].type.name : undefined;
-  const data = [{data: {}, meta: { color: 'blue' }}];
+  const data = [{ data: {}, meta: { color: "blue" } }];
   const captions = {};
   const chartOptions = {
     captionMargin: 40,
     scales: 4,
     zoomDistance: 1.3,
     captionProps: () => ({
-      textAnchor: 'middle',
+      textAnchor: "middle",
       fontSize: 11,
-    })
-  }
+    }),
+  };
   const typeArray = {
     grass: grass,
     fire: fire,
@@ -85,39 +86,63 @@ const PokeCardDetails = ({ details }) => {
           <h2 className="details-name">
             {details.name.toUpperCase()} N.{("00" + details.id).slice(-3)}
           </h2>
-          <div className="details-sprites">
+          <div className="details-sprites" onClick={() => setIsShiny(!isShiny)}>
             {details.sprites.versions["generation-v"]["black-white"].animated
               .front_default ? (
+              isShiny ? (
+                <>
+                  <img
+                    className="details-gif"
+                    src={
+                      details.sprites.versions["generation-v"]["black-white"]
+                        .animated.front_shiny
+                    }
+                    alt="front shiny"
+                  />
+                  <img
+                    className="details-gif"
+                    src={
+                      details.sprites.versions["generation-v"]["black-white"]
+                        .animated.back_shiny
+                    }
+                    alt="back shiny"
+                  />
+                </>
+              ) : (
+                <>
+                  <img
+                    className="details-gif"
+                    src={
+                      details.sprites.versions["generation-v"]["black-white"]
+                        .animated.front_default
+                    }
+                    alt="front default"
+                  />
+                  <img
+                    className="details-gif"
+                    src={
+                      details.sprites.versions["generation-v"]["black-white"]
+                        .animated.back_default
+                    }
+                    alt="back default"
+                  />
+                </>
+              )
+            ) : isShiny ? (
               <>
                 <img
-                  className="details-gif"
+                  className="details-img"
                   src={
                     details.sprites.versions["generation-v"]["black-white"]
-                      .animated.front_default
-                  }
-                  alt="front default"
-                />
-                <img
-                  className="details-gif"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .animated.back_default
-                  }
-                  alt="back default"
-                />
-                <img
-                  className="details-gif"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .animated.front_shiny
+                      .front_shiny || defaultPicture
                   }
                   alt="front shiny"
                 />
                 <img
-                  className="details-gif"
+                  className="details-img"
                   src={
                     details.sprites.versions["generation-v"]["black-white"]
-                      .animated.back_shiny
+                      .back_shiny || defaultPicture
                   }
                   alt="back shiny"
                 />
@@ -140,22 +165,6 @@ const PokeCardDetails = ({ details }) => {
                   }
                   alt="back default"
                 />
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .front_shiny || defaultPicture
-                  }
-                  alt="front shiny"
-                />
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .back_shiny || defaultPicture
-                  }
-                  alt="back shiny"
-                />
               </>
             )}
           </div>
@@ -165,39 +174,42 @@ const PokeCardDetails = ({ details }) => {
               <img className="type" src={typeArray[type2]} alt={type2} />
             )}
           </div>
+          <div className="details-size">
+            <p>Height: {details.height / 10} m</p>
+            <p>Weight: {details.weight / 10} kg</p>
+          </div>
           <div className="details-text">
             <p>{text}</p>
           </div>
         </div>
       </div>
       <div className="details-data">
-        <div className="details-size">
-          <p>Height: {details.height / 10} m</p>
-          <p>Weight: {details.weight / 10} kg</p>
+        <div className="details-stats">
+          <p className="stat-title">Pokémon stats</p>
+          <div className="details-stats-grid">
+            {details.stats.map((value) => {
+              captions[value.stat.name] =
+                value.stat.name.length > 5
+                  ? value.stat.name
+                      .split("-")
+                      .map((statName) => statName.slice(0, 3))
+                      .join(" ")
+                  : value.stat.name;
+              data[0].data[value.stat.name] = value.base_stat / 100;
+              return (
+                <p className="stat">
+                  {captions[value.stat.name]}: {value.base_stat}
+                </p>
+              );
+            })}
+          </div>
         </div>
-        <div className="stats">
-          <p>Stats :</p>
-          {details.stats.map((value) => {
-            captions[value.stat.name] = value.stat.name.length > 5 ?
-              value.stat.name.split('-')
-              .map((statName) => (statName.slice(0, 3)))
-              .join(' ')
-              : value.stat.name;
-            data[0].data[value.stat.name] = value.base_stat / 100;
-            return (
-              <p>
-                {value.stat.name}: {value.base_stat}
-              </p>
-            )
-          })}
-          {console.log(data[0].data)}
-          <RadarChart
-            captions={captions}
-            data={data}
-            size={450}
-            options={chartOptions}
-          />
-        </div>
+        <RadarChart
+          captions={captions}
+          data={data}
+          size={400}
+          options={chartOptions}
+        />
       </div>
     </div>
   );
