@@ -2,6 +2,7 @@
   padding: 50px 0px;
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: raw;
   font-family: "pokemonGB";
 }
@@ -34,13 +35,13 @@
   width: 250px;
 }
 
-.details-gif {
-  width: 100px;
+/* .details-gif {
+  width: 150%;
 }
 
 .details-img {
   width: 100px;
-}
+} */
 
 .types {
   width: 250px;
@@ -97,6 +98,13 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.nav-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .details-grass {

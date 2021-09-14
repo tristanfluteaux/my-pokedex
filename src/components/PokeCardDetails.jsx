@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 // import { withRouter } from "react-router";
-import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
 import grass from "../assets/pokemon_types_png/pokemon_grass.png";
 import fire from "../assets/pokemon_types_png/pokemon_fire.png";
 import water from "../assets/pokemon_types_png/pokemon_water.png";
@@ -24,11 +23,12 @@ import RadarChart from "react-svg-radar-chart";
 import "react-svg-radar-chart/build/css/index.css";
 
 import "./PokeCardDetails.css";
+import SpritesFrontBack from "./SpritesFrontBack";
 
-const PokeCardDetails = ({ details }) => {
+const PokeCardDetails = ({ details, setDetails }) => {
   // const [evolve, setEvole] = useState([]);
+  const [id, setId] = useState(details.id);
   const [text, setText] = useState("");
-  const [isShiny, setIsShiny] = useState(false);
   const type1 = details.types[0].type.name;
   const type2 =
     details.types.length === 2 ? details.types[1].type.name : undefined;
@@ -36,7 +36,7 @@ const PokeCardDetails = ({ details }) => {
   const captions = {};
   const chartOptions = {
     captionMargin: 40,
-    scales: 4,
+    scales: 12,
     zoomDistance: 1.3,
     captionProps: () => ({
       textAnchor: "middle",
@@ -68,106 +68,34 @@ const PokeCardDetails = ({ details }) => {
     // axios
     // .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
     // .then((res) => res.data.chain.evolves_to[0]);
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
-      .then((res) =>
-        setText(
-          res.data.flavor_text_entries[0].flavor_text
-            .replace(/\f|\n/g, " ")
-            .replace("POKéMON", "pokémon")
-        )
-      );
-  }, []);
+    const getDetails = () => {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        .then((res) => setDetails(res.data));
+    };
+    getDetails();
+    const getText = () => {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
+        .then((res) =>
+          setText(
+            res.data.flavor_text_entries[0].flavor_text
+              .replace(/\f|\n/g, " ")
+              .replace("POKéMON", "pokémon")
+          )
+        );
+    };
+    getText();
+  }, [id]);
 
   return (
     <div className={`details-card details-${type1}`}>
       <div className="details-primary-container">
         <div className="details-primary">
           <h2 className="details-name">
-            {details.name.toUpperCase()} N.{("00" + details.id).slice(-3)}
+            {details.name.toUpperCase()} N.{("00" + id).slice(-3)}
           </h2>
-          <div className="details-sprites" onClick={() => setIsShiny(!isShiny)}>
-            {details.sprites.versions["generation-v"]["black-white"].animated
-              .front_default ? (
-              isShiny ? (
-                <>
-                  <img
-                    className="details-gif"
-                    src={
-                      details.sprites.versions["generation-v"]["black-white"]
-                        .animated.front_shiny
-                    }
-                    alt="front shiny"
-                  />
-                  <img
-                    className="details-gif"
-                    src={
-                      details.sprites.versions["generation-v"]["black-white"]
-                        .animated.back_shiny
-                    }
-                    alt="back shiny"
-                  />
-                </>
-              ) : (
-                <>
-                  <img
-                    className="details-gif"
-                    src={
-                      details.sprites.versions["generation-v"]["black-white"]
-                        .animated.front_default
-                    }
-                    alt="front default"
-                  />
-                  <img
-                    className="details-gif"
-                    src={
-                      details.sprites.versions["generation-v"]["black-white"]
-                        .animated.back_default
-                    }
-                    alt="back default"
-                  />
-                </>
-              )
-            ) : isShiny ? (
-              <>
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .front_shiny || defaultPicture
-                  }
-                  alt="front shiny"
-                />
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .back_shiny || defaultPicture
-                  }
-                  alt="back shiny"
-                />
-              </>
-            ) : (
-              <>
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .front_default || defaultPicture
-                  }
-                  alt="front default"
-                />
-                <img
-                  className="details-img"
-                  src={
-                    details.sprites.versions["generation-v"]["black-white"]
-                      .back_default || defaultPicture
-                  }
-                  alt="back default"
-                />
-              </>
-            )}
-          </div>
+          <SpritesFrontBack details={details} />
           <div className="types">
             <img className="type" src={typeArray[type1]} alt={type1} />
             {type2 && (
@@ -195,7 +123,7 @@ const PokeCardDetails = ({ details }) => {
                       .map((statName) => statName.slice(0, 3))
                       .join(" ")
                   : value.stat.name;
-              data[0].data[value.stat.name] = value.base_stat / 100;
+              data[0].data[value.stat.name] = value.base_stat / 300;
               return (
                 <p className="stat">
                   {captions[value.stat.name]}: {value.base_stat}
@@ -210,6 +138,18 @@ const PokeCardDetails = ({ details }) => {
           size={400}
           options={chartOptions}
         />
+      </div>
+      <div className="nav-buttons">
+        {id > 1 && (
+          <button className="nav-btn" onClick={() => setId(id - 1)}>
+            Previous
+          </button>
+        )}
+        {id < 898 && (
+          <button className="nav-btn" onClick={() => setId(id + 1)}>
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
