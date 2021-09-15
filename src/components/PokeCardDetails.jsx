@@ -1,36 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 // import { withRouter } from "react-router";
-import grass from "../assets/pokemon_types_png/pokemon_grass.png";
-import fire from "../assets/pokemon_types_png/pokemon_fire.png";
-import water from "../assets/pokemon_types_png/pokemon_water.png";
-import ground from "../assets/pokemon_types_png/pokemon_ground.png";
-import rock from "../assets/pokemon_types_png/pokemon_rock.png";
-import electric from "../assets/pokemon_types_png/pokemon_electric.png";
-import bug from "../assets/pokemon_types_png/pokemon_bug.png";
-import ice from "../assets/pokemon_types_png/pokemon_ice.png";
-import dark from "../assets/pokemon_types_png/pokemon_dark.png";
-import steel from "../assets/pokemon_types_png/pokemon_steel.png";
-import psychic from "../assets/pokemon_types_png/pokemon_psychic.png";
-import dragon from "../assets/pokemon_types_png/pokemon_dragon.png";
-import fairy from "../assets/pokemon_types_png/pokemon_fairy.png";
-import ghost from "../assets/pokemon_types_png/pokemon_ghost.png";
-import flying from "../assets/pokemon_types_png/pokemon_flying.png";
-import fighting from "../assets/pokemon_types_png/pokemon_fighting.png";
-import normal from "../assets/pokemon_types_png/pokemon_normal.png";
-import poison from "../assets/pokemon_types_png/pokemon_poison.png";
 import RadarChart from "react-svg-radar-chart";
 import "react-svg-radar-chart/build/css/index.css";
 import "./PokeCardDetails.css";
 import SpritesFrontBack from "./SpritesFrontBack";
+import Types from "./Types";
 
 const PokeCardDetails = ({ details, setDetails }) => {
   // const [evolve, setEvole] = useState([]);
   const [id, setId] = useState(details.id);
   const [text, setText] = useState("");
-  const type1 = details.types[0].type.name;
-  const type2 =
-    details.types.length === 2 ? details.types[1].type.name : undefined;
   const data = [{ data: {}, meta: { color: "blue" } }];
   const captions = {};
   const chartOptions = {
@@ -41,26 +21,6 @@ const PokeCardDetails = ({ details, setDetails }) => {
       textAnchor: "middle",
       fontSize: 11,
     }),
-  };
-  const typeArray = {
-    grass: grass,
-    fire: fire,
-    water: water,
-    ground: ground,
-    rock: rock,
-    electric: electric,
-    bug: bug,
-    ice: ice,
-    dark: dark,
-    steel: steel,
-    psychic: psychic,
-    dragon: dragon,
-    fairy: fairy,
-    ghost: ghost,
-    flying: flying,
-    fighting: fighting,
-    normal: normal,
-    poison: poison,
   };
 
   useEffect(() => {
@@ -88,7 +48,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
   }, [id]);
 
   return (
-    <div className={`details-card details-${type1}`}>
+    <div className={`details-card details-${details.types[0].type.name}`}>
       <div className="details-primary-container">
         <div className="details-primary">
           <h2 className="details-name">
@@ -97,12 +57,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
           <SpritesFrontBack
             sprites={details.sprites.versions["generation-v"]["black-white"]}
           />
-          <div className="types">
-            <img className="type" src={typeArray[type1]} alt={type1} />
-            {type2 && (
-              <img className="type" src={typeArray[type2]} alt={type2} />
-            )}
-          </div>
+          <Types types={details.types} />
           <div className="details-size">
             <p>Height: {details.height / 10} m</p>
             <p>Weight: {details.weight / 10} kg</p>
