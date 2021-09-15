@@ -7,7 +7,7 @@ const PokemonStats = ({ stats }) => {
   const captions = {};
   const chartOptions = {
     captionMargin: 40,
-    scales: 12,
+    scales: 4,
     zoomDistance: 1.3,
     captionProps: () => ({
       textAnchor: "middle",
