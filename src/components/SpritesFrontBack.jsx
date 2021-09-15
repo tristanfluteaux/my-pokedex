@@ -1,67 +1,28 @@
 import { useState } from "react";
 import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
 
-const SpritesFrontBack = ({ details }) => {
+const SpritesFrontBack = ({ sprites }) => {
   const [isShiny, setIsShiny] = useState(false);
 
   return (
     <div className="details-sprites" onClick={() => setIsShiny(!isShiny)}>
-      {details.sprites.versions["generation-v"]["black-white"].animated
-        .front_default ? (
-        isShiny ? (
-          <>
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .front_shiny
-              }
-              alt="front shiny"
-            />
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .back_shiny
-              }
-              alt="back shiny"
-            />
-          </>
-        ) : (
-          <>
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .front_default
-              }
-              alt="front default"
-            />
-            <img
-              className="details-gif"
-              src={
-                details.sprites.versions["generation-v"]["black-white"].animated
-                  .back_default
-              }
-              alt="back default"
-            />
-          </>
-        )
-      ) : isShiny ? (
+      {isShiny ? (
         <>
           <img
-            className="details-img"
+            className="details-gif"
             src={
-              details.sprites.versions["generation-v"]["black-white"]
-                .front_shiny || defaultPicture
+              sprites.animated.front_shiny ||
+              sprites.front_shiny ||
+              defaultPicture
             }
             alt="front shiny"
           />
           <img
-            className="details-img"
+            className="details-gif"
             src={
-              details.sprites.versions["generation-v"]["black-white"]
-                .back_shiny || defaultPicture
+              sprites.animated.back_shiny ||
+              sprites.back_shiny ||
+              defaultPicture
             }
             alt="back shiny"
           />
@@ -69,18 +30,20 @@ const SpritesFrontBack = ({ details }) => {
       ) : (
         <>
           <img
-            className="details-img"
+            className="details-gif"
             src={
-              details.sprites.versions["generation-v"]["black-white"]
-                .front_default || defaultPicture
+              sprites.animated.front_default ||
+              sprites.front_default ||
+              defaultPicture
             }
             alt="front default"
           />
           <img
-            className="details-img"
+            className="details-gif"
             src={
-              details.sprites.versions["generation-v"]["black-white"]
-                .back_default || defaultPicture
+              sprites.animated.back_default ||
+              sprites.back_default ||
+              defaultPicture
             }
             alt="back default"
           />

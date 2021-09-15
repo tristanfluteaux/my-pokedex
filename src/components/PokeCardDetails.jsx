@@ -21,7 +21,6 @@ import normal from "../assets/pokemon_types_png/pokemon_normal.png";
 import poison from "../assets/pokemon_types_png/pokemon_poison.png";
 import RadarChart from "react-svg-radar-chart";
 import "react-svg-radar-chart/build/css/index.css";
-
 import "./PokeCardDetails.css";
 import SpritesFrontBack from "./SpritesFrontBack";
 
@@ -95,7 +94,9 @@ const PokeCardDetails = ({ details, setDetails }) => {
           <h2 className="details-name">
             {details.name.toUpperCase()} N.{("00" + id).slice(-3)}
           </h2>
-          <SpritesFrontBack details={details} />
+          <SpritesFrontBack
+            sprites={details.sprites.versions["generation-v"]["black-white"]}
+          />
           <div className="types">
             <img className="type" src={typeArray[type1]} alt={type1} />
             {type2 && (
@@ -123,7 +124,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
                       .map((statName) => statName.slice(0, 3))
                       .join(" ")
                   : value.stat.name;
-              data[0].data[value.stat.name] = value.base_stat / 300;
+              data[0].data[value.stat.name] = value.base_stat / 100;
               return (
                 <p className="stat">
                   {captions[value.stat.name]}: {value.base_stat}
