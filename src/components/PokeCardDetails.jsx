@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 // import { withRouter } from "react-router";
-import RadarChart from "react-svg-radar-chart";
-import "react-svg-radar-chart/build/css/index.css";
 import "./PokeCardDetails.css";
+import PokemonStats from "./PokemonStats";
 import SpritesFrontBack from "./SpritesFrontBack";
 import Types from "./Types";
 
@@ -11,17 +10,6 @@ const PokeCardDetails = ({ details, setDetails }) => {
   // const [evolve, setEvole] = useState([]);
   const [id, setId] = useState(details.id);
   const [text, setText] = useState("");
-  const data = [{ data: {}, meta: { color: "blue" } }];
-  const captions = {};
-  const chartOptions = {
-    captionMargin: 40,
-    scales: 12,
-    zoomDistance: 1.3,
-    captionProps: () => ({
-      textAnchor: "middle",
-      fontSize: 11,
-    }),
-  };
 
   useEffect(() => {
     // axios
@@ -67,36 +55,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
           </div>
         </div>
       </div>
-      <div className="details-data">
-        <div className="details-stats">
-          <p className="stat-title">Pokémon stats</p>
-          <div className="details-stats-grid">
-            {details.stats.map((value) => {
-              captions[value.stat.name] =
-                value.stat.name.length > 5
-                  ? value.stat.name
-                      .split("-")
-                      .map((statName) => statName.slice(0, 3))
-                      .join(" ")
-                  : value.stat.name;
-              data[0].data[value.stat.name] = value.base_stat / 100;
-              return (
-                <p className="stat">
-                  {captions[value.stat.name]}: {value.base_stat}
-                </p>
-              );
-            })}
-          </div>
-        </div>
-        <div className='details-graph'>
-          <RadarChart
-            captions={captions}
-            data={data}
-            size={400}
-            options={chartOptions}
-          />
-        </div>
-      </div>
+      <PokemonStats stats={details.stats} />
       <div className="nav-buttons">
         {id > 1 && (
           <button className="nav-btn" onClick={() => setId(id - 1)}>

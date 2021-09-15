@@ -60,41 +60,6 @@
   width: 500px;
 }
 
-.details-data {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  min-height: 250px;
-}
-
-.details-stats {
-  background: rgb(56, 56, 56);
-  color: silver;
-  width: 22em;
-  padding: 10px;
-  border: solid white 2px;
-  border-radius: 10px;
-}
-
-.stat-title {
-  font-size: 20px;
-}
-
-.details-stats-grid {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100px;
-}
-
-.stat {
-  margin: 5px;
-}
-
 .details-size {
   display: flex;
   align-items: center;
