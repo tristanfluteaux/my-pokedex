@@ -29,3 +29,39 @@
   justify-content: space-between;
   width: 100%;
 }
+
+@media screen and (max-width: 750px) {
+  .infos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 400px;
+    height: 100%;
+  }
+
+  .infos-name {
+    font-size: 30px;
+  }
+
+  .infos-text {
+    width: 90%;
+  }
+
+  .infos-size {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
