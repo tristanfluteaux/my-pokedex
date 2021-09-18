@@ -132,12 +132,14 @@ const PokeCardDetails = ({ details, setDetails }) => {
             })}
           </div>
         </div>
-        <RadarChart
-          captions={captions}
-          data={data}
-          size={400}
-          options={chartOptions}
-        />
+        <div className='details-graph'>
+          <RadarChart
+            captions={captions}
+            data={data}
+            size={400}
+            options={chartOptions}
+          />
+        </div>
       </div>
       <div className="nav-buttons">
         {id > 1 && (

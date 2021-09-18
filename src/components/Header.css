@@ -11,12 +11,17 @@
     color: white;
     font-family: Marker Felt, fantasy;
     text-shadow: 2px 2px 2px black;
-    list-style-type: none;
+
 }
 
 .header-navlink {
-    list-style-type: none;
+    text-decoration: none;
     
+}
+
+.head-gif {
+    width: 150px;
+    transition: 3s linear 1s infinite alternate slidein;
 }
 
 .parents-search {
@@ -32,9 +37,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     height: 40px;
-    border-radius: 200px;
+    border-radius: 10px;
     text-align: center;
     border: none;
     outline: none;
@@ -49,7 +54,7 @@
     list-style-type: none;
     text-align: center;
     background-color: rgb(255, 60, 0);
-    width: 30vh;
+    width: 25vh;
 }
 .search-result li {
     padding: 5px 0px;

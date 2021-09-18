@@ -1,3 +1,4 @@
+
 .details-card {
   padding: 50px 0px;
   text-align: center;
@@ -22,6 +23,7 @@
   justify-content: space-between;
   width: 30em;
   min-height: 400px;
+  
 }
 
 .details-name {
@@ -279,4 +281,126 @@
     75%,
     rgb(200, 200, 200)
   );
+}
+
+@media screen and (max-width: 750px) {
+
+  .details-card {
+    padding: 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-family: "pokemonGB";
+    
+  }
+  
+  .details-primary-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start; 
+    width: 100%; 
+  }
+  
+  .details-primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 400px;
+    height: 100%;
+    
+  }
+  
+  .details-name {
+    font-size: 30px;
+  }
+   
+  .details-sprites {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+  }
+  
+  .details-gif {
+    width: 150%;
+  }
+  
+  .details-img {
+    width: 100px;
+  } 
+  
+  .types {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .type {
+    width: 100px;
+  }
+  
+  .details-text {
+    width: 90%;
+  } 
+   
+  .details-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    min-height: 250px;
+    padding-top: 40px;
+  }
+  
+  .details-stats {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgb(56, 56, 56);
+    color: silver;
+    width: 22em;
+    padding: 10px;
+    border: solid white 2px;
+    border-radius: 10px;
+  }
+  
+  .stat-title {
+    font-size: 20px;
+  }
+  
+  .details-stats-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+    
+  }
+  
+  .stat {
+    margin: 5px;
+  }
+  
+  .details-size {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
