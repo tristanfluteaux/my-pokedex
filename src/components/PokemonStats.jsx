@@ -28,7 +28,7 @@ const PokemonStats = ({ stats }) => {
                     .map((statName) => statName.slice(0, 3))
                     .join(" ")
                 : value.stat.name;
-            data[0].data[value.stat.name] = value.base_stat / 100;
+            data[0].data[value.stat.name] = value.base_stat / 300;
             return (
               <p className="stat">
                 {captions[value.stat.name]}: {value.base_stat}

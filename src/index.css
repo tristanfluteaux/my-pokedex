@@ -14,5 +14,6 @@ code {
 
 @font-face {
   font-family: "pokemonGB";
-  src: local("pokemonGB"), url(./fonts/Pokemon\ GB.ttf) format("truetype");
+  src: local("pokemonGB"),
+    url(./assets/fonts/Pokemon\ GB.ttf) format("truetype");
 }

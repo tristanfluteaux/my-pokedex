@@ -14,7 +14,7 @@ const PokeDetails = () => {
         .then((res) => setDetails(res.data));
     };
     getDetails();
-  }, []);
+  }, [id]);
 
   return (
     <div>
