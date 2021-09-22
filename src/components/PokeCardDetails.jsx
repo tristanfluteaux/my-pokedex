@@ -10,9 +10,9 @@ const PokeCardDetails = ({ details, setDetails }) => {
   // const [evolve, setEvole] = useState([]);
 
   useEffect(() => {
-    // axios
-    // .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
-    // .then((res) => res.data.chain.evolves_to[0]);
+    axios
+    .get(`https://pokeapi.co/api/v2/evolution-chain/${details.id}/`)
+    .then((res) => console.log(res.data.chain.species));
     const getDetails = () => {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${details.id}`)

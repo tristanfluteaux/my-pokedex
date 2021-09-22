@@ -1,3 +1,31 @@
+body {
+  animation: AnimationName 10s ease-in-out infinite;
+}
+
+@keyframes AnimationName {
+  0%{
+    background: red;
+  }
+  17%{
+    background: orange;
+  }
+  34%{
+    background: rgba(221, 221, 20, 0.897);
+  }
+  51%{
+    background: rgb(90, 228, 56);
+  }
+  68%{
+    background: rgb(0, 225, 255);
+  }
+  85%{
+    background: rgb(173, 54, 253);
+  }
+  100%{
+    background: red;
+  }
+}
+
 .main-list {
   display: flex;
   flex-wrap: wrap;
@@ -7,15 +35,7 @@
 }
 
 .list-background {
-  background: linear-gradient(
-    white,
-    red,
-    orange,
-    yellow,
-    lightgreen,
-    lightblue,
-    pink
-  );
+  background: white !important;
 }
 
 .list-button {
@@ -23,7 +43,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
 }
 
 .gen-button {

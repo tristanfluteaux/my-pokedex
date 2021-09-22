@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import '../components/Header.css';
 
-const Search = () => {
+const Search = ({shiny}) => {
 
     const [searchValue, setSearchValue] = useState('');
     const [name, setName] = useState([]);
@@ -23,7 +23,7 @@ const Search = () => {
     };
 
     return (
-        <div className='parents-search'>
+        <div className={`parents-search ${shiny ? "list-background" : ""}`}>
             <input
             value={searchValue}
             onChange={handleChange}
