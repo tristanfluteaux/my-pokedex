@@ -1,5 +1,6 @@
 import axios from "axios";
 import PokeCard from "../components/PokeCard";
+import Search from "./Search";
 import { useState, useEffect } from "react";
 
 import "./PokeList.css";
@@ -36,7 +37,8 @@ const PokeList = () => {
 
   return (
     <>
-      <div className="list-button">
+      <Search shiny={shiny}/>
+      <div className={`list-button ${shiny ? "list-background" : ""}`}>
         <button className="gen-button" onClick={() => setGen(1)}>
           KANTO
         </button>
@@ -65,7 +67,7 @@ const PokeList = () => {
           SHINY
         </button>
       </div>
-      <div className={`main-list ${shiny ? "" : "list-background"}`}>
+      <div className={`main-list ${shiny ? "list-background" : ""}`}>
         {list.map((pokemon) => (
           <PokeCard key={pokemon.name} {...pokemon} shiny={shiny} />
         ))}
