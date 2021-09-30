@@ -13,7 +13,7 @@ const Header = () => {
         <div className='main-header'>
             <NavLink className='header-navlink' to='/'><h1 className='header-title'>Pokédex</h1></NavLink>
             <div className='head-gif'>
-                <img className='snorlax'alt='snorlax' src='https://c.tenor.com/vYhrJmhMswcAAAAi/pokemon-snorlax.gif'/>
+                <NavLink to='/team'><img className='snorlax'alt='snorlax' src='https://c.tenor.com/vYhrJmhMswcAAAAi/pokemon-snorlax.gif'/></NavLink>
             </div>
         </div>
     )

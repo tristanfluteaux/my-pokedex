@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
+import addFav from "../assets/189001.png";
+import isFav from "../assets/1752813.png";
 
 import "./PokeCard.css";
 
-const PokeCard = ({ name, url, shiny }) => {
-  const [pokemon, setPokemon] = useState({});
+const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
+  const [pokemon, setPokemon] = useState([]);
   const [type, setType] = useState("");
 
   useEffect(() => {
@@ -21,23 +23,32 @@ const PokeCard = ({ name, url, shiny }) => {
       isMounted = false;
     };
   }, []);
+  
+  const handleFavoriteClick = () => {
+    toogleFavorite(pokemon)
+  }
 
-  return (
-    <div className={`card ${type}`}>
+return (
+
+  <div className={`card ${type}`}>
+        <img src= { favorites ? addFav : isFav }
+        style={{width: '10px'}}
+        onClick={handleFavoriteClick}
+        />
       <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
         <h2 className="card-number">{("00" + pokemon.id).slice(-3)}</h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img
-            className="card-img"
-            src={
-              shiny
-                ? pokemon.sprites.front_default
-                : pokemon.sprites.front_shiny
-            }
-            alt={name}
+          className="card-img"
+          src={
+            shiny
+            ? pokemon.sprites.front_default
+            : pokemon.sprites.front_shiny
+          }
+          alt={name}
           />
-        ) : (
-          <img
+          ) : (
+            <img
             className="card-img-default"
             src={defaultPicture}
             alt="default"
