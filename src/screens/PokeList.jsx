@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import "./PokeList.css";
 
-const PokeList = () => {
+const PokeList = ({ favorites, toogleFavorite }) => {
   const [generation, setGeneration] = useState(1);
   const [limit, setLimit] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -69,7 +69,7 @@ const PokeList = () => {
       </div>
       <div className={`main-list ${shiny ? "list-background" : ""}`}>
         {list.map((pokemon) => (
-          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny} />
+          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny} favorites={favorites} toogleFavorite={toogleFavorite} />
         ))}
       </div>
     </>

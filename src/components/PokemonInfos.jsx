@@ -11,12 +11,14 @@ const PokemonInfos = ({ details }) => {
     const getText = () => {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
-        .then((res) =>
+        .then((res) => {
           setText(
-            res.data.flavor_text_entries[0].flavor_text
+          res.data.flavor_text_entries.find((text_entries) =>
+            text_entries.language.name === "en"
+          ).flavor_text
               .replace(/\f|\n/g, " ")
               .replace("POKéMON", "pokémon")
-          )
+          )}
         );
     };
     getText();

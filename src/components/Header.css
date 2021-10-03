@@ -17,23 +17,6 @@
     text-decoration: none; 
 }
 
-.head-gif {
-    width: 200px;
-    height: 150px;
-    -webkit-filter: grayscale(0) blur(0px);
-    filter: grayscale(0) blur(0px);
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-.head-gif :hover {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-}
-
 .parents-search {
     /* height: 70px; */
     display: flex;
