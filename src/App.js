@@ -29,6 +29,7 @@ function App() {
           <Route exact path="/team">
             <Team
             favorites={favorites}
+            toogleFavorite={toogleFavorite}
             />
           </Route>
         </Switch>

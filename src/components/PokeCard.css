@@ -1,13 +1,17 @@
+.card-container {
+  height: 220px;
+  width: 150px;
+}
+
 .card {
-  height: 20vh;
   padding: 5px;
   border-radius: 10px;
   margin: 10px;
   border: solid 1.5px;
   border-color: rgb(136, 132, 100);
   box-shadow: 3px 3px 5px 1px #494949c9;
-  height: 150px;
-  width: 110px;
+  height: 160px;
+  width: 130px;
 }
 
 .card-link {
@@ -36,6 +40,26 @@
   width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.favorite-container {
+  position: relative;
+}
+
+.fav-text {
+  font-family: "pokemonGb";
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.hide-fav-text {
+  visibility: hidden;
+}
+
+.fav-img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .grass {

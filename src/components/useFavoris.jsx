@@ -16,12 +16,12 @@ const useFavoris = () => {
         localStorage.setItem('favorite', JSON.stringify(favorites))
         },[favorites])
 
-    const toogleFavorite = (pokemonToAdd) => {
-        if (favorites.find(p => p.id === pokemonToAdd.id)) {
-        const newFavoriteList = favorites.filter((pokem) => pokem.id !== pokemonToAdd.id);
+    const toogleFavorite = (name, url) => {
+        if (favorites.find(p => p.url.split("/")[6] === url.split("/")[6])) {
+        const newFavoriteList = favorites.filter((pokem) => pokem.url.split("/")[6] !== url.split("/")[6]);
         setFavorites(newFavoriteList);
         } else {
-        const newFavoriteList = [...favorites, pokemonToAdd]
+        const newFavoriteList = [...favorites, {name, url}]
         setFavorites(newFavoriteList);
         }
     }

@@ -1,11 +1,12 @@
-
 import PokeCard from "./PokeCard";
 
-const TeamList = ({ favorites }) => {
-    
+import './TeamList.css'
+
+const TeamList = ({ favorites, toogleFavorite }) => {
     return ( 
-        <div>
-            {favorites && favorites.map(poke => <PokeCard key={poke.id} {...poke} />)}
+        <div className='teamlist-main'>
+            {favorites && favorites.map(poke => 
+            <PokeCard key={poke.name} {...poke} shiny={true} favorites={favorites} toogleFavorite={toogleFavorite} />)}
         </div>
     );
 }
