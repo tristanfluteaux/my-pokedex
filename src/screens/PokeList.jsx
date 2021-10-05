@@ -1,6 +1,7 @@
 import axios from "axios";
 import PokeCard from "../components/PokeCard";
 import Search from "./Search";
+import Loader from "../components/Loader";
 import { useState, useEffect } from "react";
 
 import "./PokeList.css";
@@ -9,7 +10,7 @@ const PokeList = ({ favorites, toogleFavorite }) => {
   const [generation, setGeneration] = useState(1);
   const [limit, setLimit] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState();
   const [shiny, setShiny] = useState(true);
 
   useEffect(() => {
@@ -22,11 +23,11 @@ const PokeList = ({ favorites, toogleFavorite }) => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
       .then((result) => setList(result.data.results));
-  }, [generation, offset, limit, shiny]);
+  }, [generation, offset, limit]);
 
   function setGen(genNumber) {
     if (genNumber !== generation) {
-      setList([]);
+      setList();
       setGeneration(genNumber);
     }
   }
@@ -37,7 +38,7 @@ const PokeList = ({ favorites, toogleFavorite }) => {
 
   return (
     <>
-      <Search shiny={shiny}/>
+      <Search shiny={shiny} />
       <div className={`list-button ${shiny ? "list-background" : ""}`}>
         <button className="gen-button" onClick={() => setGen(1)}>
           KANTO
@@ -68,9 +69,19 @@ const PokeList = ({ favorites, toogleFavorite }) => {
         </button>
       </div>
       <div className={`main-list ${shiny ? "list-background" : ""}`}>
-        {list.map((pokemon) => (
-          <PokeCard key={pokemon.name} {...pokemon} shiny={shiny} favorites={favorites} toogleFavorite={toogleFavorite} />
-        ))}
+        {!list ? (
+          <Loader />
+        ) : (
+          list.map((pokemon) => (
+            <PokeCard
+              key={pokemon.name}
+              {...pokemon}
+              shiny={shiny}
+              favorites={favorites}
+              toogleFavorite={toogleFavorite}
+            />
+          ))
+        )}
       </div>
     </>
   );
