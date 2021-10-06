@@ -5,7 +5,7 @@ import "./PokemonStats.css";
 const PokemonStats = ({ stats }) => {
   const data = [{ data: {}, meta: { color: "blue" } }];
   const captions = {};
-  const chartOptions = {
+  let chartOptions = {
     captionMargin: 40,
     scales: 4,
     zoomDistance: 1.3,
@@ -14,24 +14,40 @@ const PokemonStats = ({ stats }) => {
       fontSize: 11,
     }),
   };
+  let scale = 0;
+
+  const getStatsArray = () => {
+    let statsArray = [];
+
+    statsArray = stats.map((stat) => {
+      if (Math.ceil(stat.base_stat / 50) > scale)
+        scale = Math.ceil(stat.base_stat / 50);
+      return {
+        name:
+          stat.stat.name.length > 5
+            ? stat.stat.name
+                .split("-")
+                .map((statName) => statName.slice(0, 3))
+                .join(" ")
+            : stat.stat.name,
+        value: stat.base_stat,
+      };
+    });
+    chartOptions = { ...chartOptions, scales: scale * 2 };
+    return statsArray;
+  };
 
   return (
     <div className="stats-container">
       <div className="stats-board">
         <p className="stats-board-title">Pokémon stats</p>
         <div className="stats-board-content">
-          {stats.map((value) => {
-            captions[value.stat.name] =
-              value.stat.name.length > 5
-                ? value.stat.name
-                    .split("-")
-                    .map((statName) => statName.slice(0, 3))
-                    .join(" ")
-                : value.stat.name;
-            data[0].data[value.stat.name] = value.base_stat / 300;
+          {getStatsArray().map((stat, index) => {
+            captions[stat.name] = stat.name;
+            data[0].data[stat.name] = stat.value / (scale * 50);
             return (
-              <p className="stat">
-                {captions[value.stat.name]}: {value.base_stat}
+              <p key={index} className="stat">
+                {captions[stat.name]}: {stat.value}
               </p>
             );
           })}
