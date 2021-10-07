@@ -4,9 +4,9 @@ import Home from "./screens/Home";
 import PokeDetails from "./screens/PokeDetails";
 import Team from "./screens/Team";
 import useFavoris from "./components/useFavoris";
+import Footer from "./components/Footer";
 
 import "./App.css";
-
 
 function App() {
   const [favorites, toogleFavorite] = useFavoris();
@@ -17,22 +17,16 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Home
-            favorites={favorites}
-            toogleFavorite={toogleFavorite}
-            />
+            <Home favorites={favorites} toogleFavorite={toogleFavorite} />
           </Route>
           <Route path="/pokemon/:id">
-            <PokeDetails 
-            />
+            <PokeDetails />
           </Route>
           <Route exact path="/team">
-            <Team
-            favorites={favorites}
-            toogleFavorite={toogleFavorite}
-            />
+            <Team favorites={favorites} toogleFavorite={toogleFavorite} />
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );
