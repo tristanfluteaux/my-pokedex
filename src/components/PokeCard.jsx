@@ -72,13 +72,15 @@ const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
         <h2 className="card-name">{name.toUpperCase()}</h2>
         <div className="card-bar"></div>
       </NavLink>
-      <img
-        className="fav-img"
-        src={validate ? addFav : isFav}
-        alt="favorite"
-        style={{ width: "25px", height: "25px", cursor: "pointer" }}
-        onClick={handleFavoriteClick}
-      />
+      {favorites && (
+        <img
+          className="fav-img"
+          src={validate ? addFav : isFav}
+          alt="favorite"
+          style={{ width: "25px", height: "25px", cursor: "pointer" }}
+          onClick={handleFavoriteClick}
+        />
+      )}
     </div>
   );
 };
