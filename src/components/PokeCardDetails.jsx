@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import PokeCard from "./PokeCard";
 // import { withRouter } from "react-router";
 import "./PokeCardDetails.css";
+import PokemonChain from "./PokemonChain";
 import PokemonInfos from "./PokemonInfos";
 import PokemonStats from "./PokemonStats";
 
 const PokeCardDetails = ({ details, setDetails }) => {
-  const [evolutionChain, setEvolutionChain] = useState();
   const [pokemonSpecies, setPokemonSpecies] = useState();
 
   useEffect(() => {
@@ -27,41 +26,11 @@ const PokeCardDetails = ({ details, setDetails }) => {
     getPokemonSpecies();
   }, []);
 
-  useEffect(() => {
-    const getEvolutionData = () => {
-      axios.get(pokemonSpecies.evolution_chain.url).then((res) => {
-        let evolutionData = res.data.chain;
-        const evoChain = [];
-
-        do {
-          evoChain.push(evolutionData);
-          if (evolutionData.evolves_to)
-            evolutionData = evolutionData.evolves_to[0];
-          else evolutionData = null;
-        } while (evolutionData);
-        console.log(evoChain);
-        setEvolutionChain(evoChain);
-      });
-    };
-    if (pokemonSpecies) getEvolutionData();
-  }, [pokemonSpecies]);
-
   return (
     <div className={`details-card details-${details.types[0].type.name}`}>
       <PokemonInfos details={details} />
       <PokemonStats stats={details.stats} />
-      {evolutionChain &&
-        evolutionChain.length > 1 &&
-        evolutionChain.map((evolve) => {
-          return (
-            <PokeCard
-              key={evolve.species.name}
-              name={evolve.species.name}
-              url={evolve.species.url.replace("-species", "")}
-              shiny={true}
-            />
-          );
-        })}
+      <PokemonChain pokemonSpecies={pokemonSpecies} />
       <div className="nav-buttons">
         {details.id > 1 && (
           <NavLink to={`/pokemon/${details.id - 1}`}>
