@@ -17,14 +17,14 @@ const PokeCardDetails = ({ details, setDetails }) => {
         .then((res) => setDetails(res.data));
     };
     getDetails();
-  }, []);
+  }, [details.id]);
 
   useEffect(() => {
     const getPokemonSpecies = () => {
       axios.get(details.species.url).then((res) => setPokemonSpecies(res.data));
     };
     getPokemonSpecies();
-  }, []);
+  }, [details.species.url]);
 
   return (
     <div className={`details-card details-${details.types[0].type.name}`}>

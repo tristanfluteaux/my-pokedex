@@ -4,15 +4,15 @@ import PokeCard from "./PokeCard";
 
 const PokemonChain = ({ pokemonSpecies }) => {
   const [evolutionChain, setEvolutionChain] = useState();
+  const evoChain = [];
 
   useEffect(() => {
     const getEvolutionData = () => {
       axios.get(pokemonSpecies.evolution_chain.url).then((res) => {
         let evolutionData = res.data.chain;
-        const evoChain = [];
 
         evoChain.push([evolutionData]);
-        if (evolutionData.evolves_to) {
+        if (evolutionData.evolves_to.length > 0) {
           evolutionData = evolutionData.evolves_to;
         } else evolutionData = null;
         while (evolutionData) {
@@ -20,7 +20,7 @@ const PokemonChain = ({ pokemonSpecies }) => {
           for (let i = 0; i < evolutionData.length; i++)
             evolutionLevel.push(evolutionData[i]);
           evoChain.push(evolutionLevel);
-          if (evolutionData[0].evolves_to[0]) {
+          if (evolutionData[0].evolves_to.length > 0) {
             evolutionData = evolutionData[0].evolves_to;
           } else evolutionData = null;
         }
