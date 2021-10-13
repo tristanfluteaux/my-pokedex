@@ -13,13 +13,12 @@ const PokemonInfos = ({ details }) => {
         .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
         .then((res) => {
           setText(
-          res.data.flavor_text_entries.find((text_entries) =>
-            text_entries.language.name === "en"
-          ).flavor_text
-              .replace(/\f|\n/g, " ")
+            res.data.flavor_text_entries
+              .find((text_entries) => text_entries.language.name === "en")
+              .flavor_text.replace(/\f|\n/g, " ")
               .replace("POKéMON", "pokémon")
-          )}
-        );
+          );
+        });
     };
     getText();
   }, [details.id]);
@@ -28,7 +27,10 @@ const PokemonInfos = ({ details }) => {
     <div className="infos-container">
       <div className="infos">
         <h2 className="infos-name">
-          {details.name.toUpperCase()} N.{("00" + details.id).slice(-3)}
+          {details.name.toUpperCase()} N.
+          {details.id < 1000
+            ? ("00" + details.id).slice(-3)
+            : ("0000" + details.id).slice(-5)}
         </h2>
         <SpritesFrontBack
           sprites={details.sprites.versions["generation-v"]["black-white"]}

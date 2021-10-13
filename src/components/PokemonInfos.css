@@ -10,17 +10,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 30em;
   min-height: 400px;
 }
 
 .infos-name {
   font-size: 30px;
+  margin-bottom: 50px;
 }
 
-.infos-text {
-  width: 500px;
+.details-sprites {
+  min-height: 120px;
+}
+
+.type {
+  margin: 20px;
 }
 
 .infos-size {
@@ -28,6 +33,13 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin: 20px;
+}
+
+.infos-text {
+  width: 500px;
+  margin: 20px;
+  min-height: 100px;
 }
 
 @media screen and (max-width: 750px) {
