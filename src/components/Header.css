@@ -47,15 +47,24 @@
   border-radius: 30px;
   list-style-type: none;
   text-align: center;
-  background-color: rgb(255, 60, 0);
-  width: 25vh;
+  background-color: rgba(0, 0, 0, 0.507);
+  backdrop-filter: blur(4px);
+  width: 20vh;
   position: absolute;
   transform: translateX(-50%);
   z-index: 5;
+  max-height: 484px;
+  overflow-y: scroll;
 }
+
+.search-result ul::-webkit-scrollbar {
+  display: none;
+}
+
 .search-result li {
   padding: 5px 0px;
 }
+
 .search-result li a:hover {
   color: rgb(85, 147, 218);
 }
