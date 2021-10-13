@@ -8,6 +8,11 @@
   height: 170px;
   width: 130px;
   background: linear-gradient(225deg, red, rgb(241, 105, 36));
+  transition: 100ms ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-link {
@@ -22,7 +27,7 @@
 .card-name {
   background: rgba(245, 245, 245, 0.5);
   color: black;
-  font-size: 11px;
+  font-size: 10px;
   margin-bottom: 10px;
   text-align: center;
   font-family: "pokemonGB";
