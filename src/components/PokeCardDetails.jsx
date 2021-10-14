@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 // import { withRouter } from "react-router";
 import "./PokeCardDetails.css";
-import PokemonChain from "./PokemonChain";
+import EvolutionChain from "./EvolutionChain";
 import PokemonInfos from "./PokemonInfos";
 import PokemonStats from "./PokemonStats";
 
@@ -30,7 +30,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
     <div className={`details-card details-${details.types[0].type.name}`}>
       <PokemonInfos details={details} />
       <PokemonStats stats={details.stats} />
-      <PokemonChain pokemonSpecies={pokemonSpecies} />
+      <EvolutionChain pokemonSpecies={pokemonSpecies} />
       <div className="nav-buttons">
         {details.id > 1 && (
           <NavLink to={`/pokemon/${details.id - 1}`}>

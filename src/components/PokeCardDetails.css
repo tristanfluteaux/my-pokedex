@@ -10,17 +10,14 @@
 .details-sprites {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 250px;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 240px;
 }
 
-/* .details-gif {
-  width: 150%;
+.details-gif {
+  transform: scale(2);
 }
-
-.details-img {
-  width: 100px;
-} */
 
 .types {
   width: 250px;

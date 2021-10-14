@@ -1,5 +1,4 @@
 import { useState } from "react";
-import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
 
 const SpritesFrontBack = ({ sprites }) => {
   const [isShiny, setIsShiny] = useState(false);
@@ -8,45 +7,37 @@ const SpritesFrontBack = ({ sprites }) => {
     <div className="details-sprites" onClick={() => setIsShiny(!isShiny)}>
       {isShiny ? (
         <>
-          <img
-            className="details-gif"
-            src={
-              sprites.animated.front_shiny ||
-              sprites.front_shiny ||
-              defaultPicture
-            }
-            alt="front shiny"
-          />
-          <img
-            className="details-gif"
-            src={
-              sprites.animated.back_shiny ||
-              sprites.back_shiny ||
-              defaultPicture
-            }
-            alt="back shiny"
-          />
+          {(sprites.animated.front_shiny || sprites.front_shiny) && (
+            <img
+              className="details-gif"
+              src={sprites.animated.front_shiny || sprites.front_shiny}
+              alt="front shiny"
+            />
+          )}
+          {(sprites.animated.back_shiny || sprites.back_shiny) && (
+            <img
+              className="details-gif"
+              src={sprites.animated.back_shiny || sprites.back_shiny}
+              alt="back shiny"
+            />
+          )}
         </>
       ) : (
         <>
-          <img
-            className="details-gif"
-            src={
-              sprites.animated.front_default ||
-              sprites.front_default ||
-              defaultPicture
-            }
-            alt="front default"
-          />
-          <img
-            className="details-gif"
-            src={
-              sprites.animated.back_default ||
-              sprites.back_default ||
-              defaultPicture
-            }
-            alt="back default"
-          />
+          {(sprites.animated.front_default || sprites.front_default) && (
+            <img
+              className="details-gif"
+              src={sprites.animated.front_default || sprites.front_default}
+              alt="front default"
+            />
+          )}
+          {(sprites.animated.back_default || sprites.back_default) && (
+            <img
+              className="details-gif"
+              src={sprites.animated.back_default || sprites.back_default}
+              alt="back default"
+            />
+          )}
         </>
       )}
     </div>

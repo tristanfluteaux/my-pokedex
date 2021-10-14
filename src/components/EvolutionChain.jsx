@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import PokeCard from "./PokeCard";
 
-const PokemonChain = ({ pokemonSpecies }) => {
+import "./EvolutionChain.css";
+
+const EvolutionChain = ({ pokemonSpecies }) => {
   const [evolutionChain, setEvolutionChain] = useState();
   const evoChain = [];
 
@@ -31,27 +33,32 @@ const PokemonChain = ({ pokemonSpecies }) => {
   }, [pokemonSpecies]);
 
   return (
-    <>
+    <div className="evo-chain">
       {evolutionChain &&
         evolutionChain.length > 1 &&
         evolutionChain.map((evolveLevel, index) => {
           return (
-            <div key={index}>
-              {evolveLevel.map((evolve) => {
-                return (
-                  <PokeCard
-                    key={evolve.species.name}
-                    name={evolve.species.name}
-                    url={evolve.species.url.replace("-species", "")}
-                    shiny={true}
-                  />
-                );
-              })}
-            </div>
+            <>
+              <div key={index} className="evo-level">
+                {evolveLevel.map((evolve) => {
+                  return (
+                    <PokeCard
+                      key={evolve.species.name}
+                      name={evolve.species.name}
+                      url={evolve.species.url.replace("-species", "")}
+                      shiny={true}
+                    />
+                  );
+                })}
+              </div>
+              {index < evolutionChain.length - 1 && (
+                <p className="evo-chain-arrow">&#10140;</p>
+              )}
+            </>
           );
         })}
-    </>
+    </div>
   );
 };
 
-export default PokemonChain;
+export default EvolutionChain;
