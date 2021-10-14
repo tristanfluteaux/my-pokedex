@@ -7,7 +7,9 @@ import { useState, useEffect } from "react";
 import "./PokeList.css";
 
 const PokeList = ({ favorites, toogleFavorite }) => {
-  const [generation, setGeneration] = useState(1);
+  const [generation, setGeneration] = useState(
+    JSON.parse(localStorage.getItem("currentGeneration")) || 1
+  );
   const [limit, setLimit] = useState(0);
   const [offset, setOffset] = useState(0);
   const [list, setList] = useState();
@@ -29,6 +31,7 @@ const PokeList = ({ favorites, toogleFavorite }) => {
     if (genNumber !== generation) {
       setList();
       setGeneration(genNumber);
+      localStorage.setItem("currentGeneration", JSON.stringify(genNumber));
     }
   }
 

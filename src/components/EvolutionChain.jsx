@@ -39,7 +39,7 @@ const EvolutionChain = ({ pokemonSpecies }) => {
         evolutionChain.map((evolveLevel, index) => {
           return (
             <>
-              <div key={index} className="evo-level">
+              <div key={"evo-level" + index} className="evo-level">
                 {evolveLevel.map((evolve) => {
                   return (
                     <PokeCard
@@ -52,7 +52,9 @@ const EvolutionChain = ({ pokemonSpecies }) => {
                 })}
               </div>
               {index < evolutionChain.length - 1 && (
-                <p className="evo-chain-arrow">&#10140;</p>
+                <p key={"evo-chain-arrow" + index} className="evo-chain-arrow">
+                  &#10140;
+                </p>
               )}
             </>
           );

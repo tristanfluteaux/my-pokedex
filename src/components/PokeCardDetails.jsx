@@ -28,6 +28,9 @@ const PokeCardDetails = ({ details, setDetails }) => {
 
   return (
     <div className={`details-card details-${details.types[0].type.name}`}>
+      <NavLink to={"/"}>
+        <button className="back-btn">&#8617;</button>
+      </NavLink>
       <PokemonInfos details={details} />
       <PokemonStats stats={details.stats} />
       <EvolutionChain pokemonSpecies={pokemonSpecies} />

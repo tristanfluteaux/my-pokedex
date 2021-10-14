@@ -5,6 +5,28 @@
   flex-wrap: wrap;
   flex-direction: raw;
   font-family: "pokemonGB";
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+  top: 0;
+  left: 20px;
+  text-shadow: rgba(0, 0, 0, 0.5) 2px 3px;
+  transition: 150ms ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+}
+
+.back-btn:active {
+  color: grey;
 }
 
 .details-sprites {
