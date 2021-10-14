@@ -1,3 +1,6 @@
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
 import "./Footer.css";
 
 const Footer = () => {
@@ -9,9 +12,9 @@ const Footer = () => {
           <div className="contact-separator" />
           <div className="contact-links">
             <a href="https://www.linkedin.com/in/etienne-fischer-b859b7179/">
-              linkedin.com
+              <LinkedInIcon/>
             </a>
-            <a href="https://github.com/efischer42">github.com</a>
+            <a href="https://github.com/efischer42"><GitHubIcon/></a>
           </div>
         </div>
         <div className="contact">
@@ -19,9 +22,9 @@ const Footer = () => {
           <div className="contact-separator" />
           <div className="contact-links">
             <a href="https://www.linkedin.com/in/tristan-fluteaux/">
-              linkedin.com
+              <LinkedInIcon/>
             </a>
-            <a href="https://github.com/tristanfluteaux">github.com</a>
+            <a href="https://github.com/tristanfluteaux"><GitHubIcon/></a>
           </div>
         </div>
       </div>
