@@ -65,7 +65,6 @@
   width: 250px;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   border-radius: 0 0 200px 200px;
 }
@@ -76,4 +75,91 @@
   text-align: center;
   line-height: 1rem;
   color: #ffcb05;
+}
+
+.contact-links svg {
+  font-size: 40px;
+}
+
+
+@media screen and (max-width: 750px) {
+
+  .footer-container {
+    height: auto;
+    color: white;
+    /* background: #124cd3; */
+    background: rgb(27, 27, 27);
+    font-family: "pokemonGB";
+    font-size: 0.8rem;
+  }
+  
+  .all-contacts {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .contact-separator {
+    background: black;
+    height: 15px;
+    width: 250px;
+    position: relative;
+  }
+  
+  .contact-separator:after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 8px solid black;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .contact {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact p {
+    background: red;
+    height: 80px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 200px 200px 0 0;
+  }
+  
+  .contact a {
+    color: red;
+    font-size: 0.7rem;
+    margin: 5px 0;
+  }
+  
+  .contact-links {
+    background: white;
+    height: 80px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 200px 200px;
+  }
+  
+  .copyrights {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    line-height: 1rem;
+    color: #ffcb05;
+  }
 }
