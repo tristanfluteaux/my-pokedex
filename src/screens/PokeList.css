@@ -50,24 +50,39 @@ body {
 }
 
 .gen-button {
-  width: 100px;
-  height: 40px;
-  font-size: 15px;
-  font-family: "pokemonGB";
-  color: black;
-  border-radius: 5px;
   background: linear-gradient(165deg, grey, white, grey);
-  box-shadow: 1px 0.5px 2px 0px grey;
-  padding: 0;
 }
 
 .shiny-button {
+  background: linear-gradient(165deg, orange, yellow, orange);
+}
+
+.btn:focus:not(.btn-checked),
+.btn {
   width: 100px;
   height: 40px;
   font-size: 15px;
   font-family: "pokemonGB";
-  background: linear-gradient(165deg, orange, yellow, orange);
-  border-radius: 5px;
   color: black;
-  box-shadow: 1px 0.5px 2px 0px grey;
+  border-radius: 5px;
+  box-shadow: 4px 3px 2px 0px rgb(0, 0, 0, 0.5);
+  padding: 9px 0;
+}
+
+.gen-button:hover {
+  background: linear-gradient(165deg, white, grey, white);
+}
+
+.shiny-button:hover {
+  background: linear-gradient(165deg, yellow, orange, yellow);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label,
+.btn-checked,
+.btn:focus {
+  box-shadow: inset 8px 7px 5px 0px rgb(0, 0, 0, 0.5);
 }

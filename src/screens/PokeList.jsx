@@ -43,31 +43,86 @@ const PokeList = ({ favorites, toogleFavorite }) => {
     <>
       <Search shiny={shiny} />
       <div className={`list-button ${shiny ? "list-background" : ""}`}>
-        <button className="gen-button" onClick={() => setGen(1)}>
+        <input
+          type="radio"
+          id="kanto"
+          name="gen-btn"
+          checked={generation === 1}
+        />
+        <label for="kanto" className="btn gen-button" onClick={() => setGen(1)}>
           KANTO
-        </button>
-        <button className="gen-button" onClick={() => setGen(2)}>
+        </label>
+        <input
+          type="radio"
+          id="johto"
+          name="gen-btn"
+          checked={generation === 2}
+        />
+        <label for="johto" className="btn gen-button" onClick={() => setGen(2)}>
           JOHTO
-        </button>
-        <button className="gen-button" onClick={() => setGen(3)}>
+        </label>
+        <input
+          type="radio"
+          id="hoenn"
+          name="gen-btn"
+          checked={generation === 3}
+        />
+        <label for="hoenn" className="btn gen-button" onClick={() => setGen(3)}>
           HOENN
-        </button>
-        <button className="gen-button" onClick={() => setGen(4)}>
+        </label>
+        <input
+          type="radio"
+          id="sinnoh"
+          name="gen-btn"
+          checked={generation === 4}
+        />
+        <label
+          for="sinnoh"
+          className="btn gen-button"
+          onClick={() => setGen(4)}
+        >
           SINNOH
-        </button>
-        <button className="gen-button" onClick={() => setGen(5)}>
+        </label>
+        <input
+          type="radio"
+          id="unys"
+          name="gen-btn"
+          checked={generation === 5}
+        />
+        <label for="unys" className="btn gen-button" onClick={() => setGen(5)}>
           UNYS
-        </button>
-        <button className="gen-button" onClick={() => setGen(6)}>
+        </label>
+        <input
+          type="radio"
+          id="kalos"
+          name="gen-btn"
+          checked={generation === 6}
+        />
+        <label for="kalos" className="btn gen-button" onClick={() => setGen(6)}>
           KALOS
-        </button>
-        <button className="gen-button" onClick={() => setGen(7)}>
+        </label>
+        <input
+          type="radio"
+          id="alola"
+          name="gen-btn"
+          checked={generation === 7}
+        />
+        <label for="alola" className="btn gen-button" onClick={() => setGen(7)}>
           ALOLA
-        </button>
-        <button className="gen-button" onClick={() => setGen(8)}>
+        </label>
+        <input
+          type="radio"
+          id="galar"
+          name="gen-btn"
+          checked={generation === 8}
+        />
+        <label for="galar" className="btn gen-button" onClick={() => setGen(8)}>
           GALAR
-        </button>
-        <button className="shiny-button" onClick={() => getShiny()}>
+        </label>
+        <button
+          className={`btn shiny-button ${shiny ? "" : "btn-checked"}`}
+          onClick={() => getShiny()}
+        >
           SHINY
         </button>
       </div>
