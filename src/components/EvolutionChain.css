@@ -11,17 +11,17 @@
   color: rgba(0, 0, 0, 0.61);
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
   .evo-chain {
-    width: 600px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
 
   .evo-chain-arrow {
-    font-size: 3rem;
-    color: rgba(0, 0, 0, 0.61);
+    transform: rotate(0.25turn);
   }
 }

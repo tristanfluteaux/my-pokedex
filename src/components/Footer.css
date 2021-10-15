@@ -1,5 +1,5 @@
 .footer-container {
-  height: 300px;
+  min-height: 300px;
   color: white;
   /* background: #124cd3; */
   background: rgb(27, 27, 27);
@@ -81,9 +81,7 @@
   font-size: 40px;
 }
 
-
 @media screen and (max-width: 750px) {
-
   .footer-container {
     height: auto;
     color: white;
@@ -92,22 +90,24 @@
     font-family: "pokemonGB";
     font-size: 0.8rem;
   }
-  
+
   .all-contacts {
     width: 100%;
+    height: 400px;
     padding: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
   }
-  
+
   .contact-separator {
     background: black;
     height: 15px;
     width: 250px;
     position: relative;
   }
-  
+
   .contact-separator:after {
     content: "";
     width: 50px;
@@ -120,7 +120,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   .contact {
     width: 50%;
     display: flex;
@@ -128,7 +128,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .contact p {
     background: red;
     height: 80px;
@@ -138,13 +138,13 @@
     justify-content: center;
     border-radius: 200px 200px 0 0;
   }
-  
+
   .contact a {
     color: red;
     font-size: 0.7rem;
     margin: 5px 0;
   }
-  
+
   .contact-links {
     background: white;
     height: 80px;
@@ -154,7 +154,7 @@
     justify-content: center;
     border-radius: 0 0 200px 200px;
   }
-  
+
   .copyrights {
     width: 80%;
     margin: auto;

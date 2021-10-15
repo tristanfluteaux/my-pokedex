@@ -6,6 +6,7 @@ import "./PokemonInfos.css";
 
 const PokemonInfos = ({ details }) => {
   const [text, setText] = useState("");
+  const [isShiny, setIsShiny] = useState(false);
 
   useEffect(() => {
     const getText = () => {
@@ -32,8 +33,15 @@ const PokemonInfos = ({ details }) => {
             ? ("00" + details.id).slice(-3)
             : ("0000" + details.id).slice(-5)}
         </h2>
+        <button
+          className={`btn shiny-button ${isShiny ? "btn-checked" : ""}`}
+          onClick={() => setIsShiny(!isShiny)}
+        >
+          SHINY
+        </button>
         <SpritesFrontBack
           sprites={details.sprites.versions["generation-v"]["black-white"]}
+          isShiny={isShiny}
         />
         <Types types={details.types} />
         <div className="infos-size">

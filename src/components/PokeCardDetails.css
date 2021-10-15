@@ -15,7 +15,7 @@
   font-size: 4rem;
   font-weight: bold;
   color: rgb(48, 48, 48);
-  top: 0;
+  top: -20px;
   left: 20px;
   text-shadow: rgba(0, 0, 0, 0.5) 2px 3px;
   transition: 150ms ease;
@@ -248,7 +248,7 @@
   );
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 970px) {
   .details-card {
     padding: 50px 0px;
     display: flex;
@@ -257,28 +257,6 @@
     justify-content: center;
     text-align: center;
     font-family: "pokemonGB";
-  }
-
-  .details-sprites {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 40%;
-  }
-
-  .details-gif {
-    width: 150%;
-  }
-
-  .details-img {
-    width: 100px;
-  }
-
-  .types {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
 
   .type {

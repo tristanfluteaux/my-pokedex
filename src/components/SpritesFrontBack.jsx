@@ -1,10 +1,6 @@
-import { useState } from "react";
-
-const SpritesFrontBack = ({ sprites }) => {
-  const [isShiny, setIsShiny] = useState(false);
-
+const SpritesFrontBack = ({ sprites, isShiny }) => {
   return (
-    <div className="details-sprites" onClick={() => setIsShiny(!isShiny)}>
+    <div className="details-sprites">
       {isShiny ? (
         <>
           {(sprites.animated.front_shiny || sprites.front_shiny) && (
