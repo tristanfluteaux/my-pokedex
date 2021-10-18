@@ -38,6 +38,15 @@ const Search = ({ shiny }) => {
             name &&
             name
               .filter((word) => word.name.match(searchValue))
+              .sort((a, b) => {
+                return a.name < b.name ? -1 : 1;
+              })
+              .sort((a, b) => {
+                return (
+                  a.name.match(searchValue).index -
+                  b.name.match(searchValue).index
+                );
+              })
               .map((poke) => (
                 <li key={poke.name}>
                   <NavLink
