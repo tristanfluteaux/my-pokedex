@@ -56,7 +56,7 @@ const PokemonStats = ({ stats }) => {
       <RadarChart
         captions={captions}
         data={data}
-        size={400}
+        size={window.innerWidth > 400 ? 400 : 320}
         options={chartOptions}
       />
     </div>

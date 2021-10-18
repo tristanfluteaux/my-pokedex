@@ -1,9 +1,13 @@
 .details-card {
   padding: 50px 0px;
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: raw;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 650px 200px 50px;
+  grid-template-areas:
+    "infos stats"
+    "evo evo"
+    "btns btns";
   font-family: "pokemonGB";
   position: relative;
 }
@@ -41,18 +45,8 @@
   transform: scale(2);
 }
 
-.types {
-  width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.type {
-  width: 100px;
-}
-
 .nav-buttons {
+  grid-area: btns;
   width: 100%;
 }
 
@@ -250,13 +244,11 @@
 
 @media screen and (max-width: 970px) {
   .details-card {
-    padding: 50px 0px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    font-family: "pokemonGB";
   }
 
   .type {

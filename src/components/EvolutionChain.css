@@ -1,4 +1,5 @@
 .evo-chain {
+  grid-area: evo;
   width: 600px;
   margin: 0 auto;
   display: flex;
