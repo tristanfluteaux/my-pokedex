@@ -22,7 +22,6 @@
   top: -20px;
   left: 20px;
   text-shadow: rgba(0, 0, 0, 0.5) 2px 3px;
-  transition: 150ms ease;
 }
 
 .back-btn:hover {
@@ -31,6 +30,11 @@
 
 .back-btn:active {
   color: grey;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
 }
 
 .details-sprites {

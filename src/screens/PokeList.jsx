@@ -14,6 +14,7 @@ const PokeList = ({ favorites, toogleFavorite }) => {
   const [offset, setOffset] = useState(0);
   const [list, setList] = useState();
   const [shiny, setShiny] = useState(true);
+  const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     axios
@@ -39,10 +40,19 @@ const PokeList = ({ favorites, toogleFavorite }) => {
     setShiny(!shiny);
   }
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 375) setIsFixed(true);
+    else setIsFixed(false);
+  });
+
   return (
     <>
       <Search shiny={shiny} />
-      <div className={`list-button ${shiny ? "list-background" : ""}`}>
+      <div
+        className={`list-button ${shiny ? "list-background" : ""} ${
+          isFixed ? "list-btn-fixed" : ""
+        }`}
+      >
         <input
           type="radio"
           id="kanto"

@@ -10,6 +10,7 @@ import DetailsNavButtons from "./DetailsNavButtons";
 
 const PokeCardDetails = ({ details, setDetails }) => {
   const [pokemonSpecies, setPokemonSpecies] = useState();
+  const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     const getDetails = () => {
@@ -27,10 +28,20 @@ const PokeCardDetails = ({ details, setDetails }) => {
     getPokemonSpecies();
   }, [details.species.url]);
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 350) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  });
+
   return (
     <div className={`details-card details-${details.types[0].type.name}`}>
       <NavLink to={"/"}>
-        <button className="back-btn">&#8617;</button>
+        <button className={`back-btn ${isFixed ? "fixed" : ""}`}>
+          &#8617;
+        </button>
       </NavLink>
       <PokemonInfos details={details} />
       <PokemonStats stats={details.stats} />

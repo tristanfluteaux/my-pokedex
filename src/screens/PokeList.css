@@ -49,6 +49,12 @@ body {
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
 }
 
+.list-btn-fixed {
+  position: fixed;
+  top: 140px;
+  z-index: 1;
+}
+
 .gen-button {
   background: linear-gradient(165deg, grey, white, grey);
 }

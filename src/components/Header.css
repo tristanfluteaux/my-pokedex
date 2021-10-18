@@ -27,6 +27,14 @@
   background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3));
 }
 
+.parents-search-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-bottom: 100px;
+  z-index: 1;
+}
+
 #search-input {
   display: flex;
   justify-content: center;
