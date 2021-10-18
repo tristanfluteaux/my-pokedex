@@ -6,6 +6,7 @@ import "./PokeCardDetails.css";
 import EvolutionChain from "./EvolutionChain";
 import PokemonInfos from "./PokemonInfos";
 import PokemonStats from "./PokemonStats";
+import DetailsNavButtons from "./DetailsNavButtons";
 
 const PokeCardDetails = ({ details, setDetails }) => {
   const [pokemonSpecies, setPokemonSpecies] = useState();
@@ -34,24 +35,7 @@ const PokeCardDetails = ({ details, setDetails }) => {
       <PokemonInfos details={details} />
       <PokemonStats stats={details.stats} />
       <EvolutionChain pokemonSpecies={pokemonSpecies} />
-      <div className="nav-buttons">
-        {details.id > 1 && (
-          <NavLink to={`/pokemon/${details.id - 1}`}>
-            <button className="nav-btn previous">{`<< ${(
-              "00" +
-              (details.id - 1)
-            ).slice(-3)}`}</button>
-          </NavLink>
-        )}
-        {details.id < 898 && (
-          <NavLink to={`/pokemon/${details.id + 1}`}>
-            <button className="nav-btn next">{`${(
-              "00" +
-              (details.id + 1)
-            ).slice(-3)} >>`}</button>
-          </NavLink>
-        )}
-      </div>
+      <DetailsNavButtons pokemonId={details.id} />
     </div>
   );
 };
