@@ -10,6 +10,8 @@ import "./App.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import Troll from "./components/Troll/Troll";
+import TrollEnter from "./components/Troll/TrollEnter";
 
 function App() {
   const [pokemon, setPokemon] = useState();
@@ -51,6 +53,12 @@ function App() {
           </Route>
           <Route exact path="/team">
             <Team favorites={favorites} toogleFavorite={toogleFavorite} />
+          </Route>
+          <Route exact path='/troll'>
+            <TrollEnter/>
+          </Route>
+          <Route exact path="/trollreal">
+            <Troll/>
           </Route>
         </Switch>
         <Footer />
