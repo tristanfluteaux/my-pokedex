@@ -7,7 +7,6 @@ import "../components/Header.css";
 const Search = ({ shiny }) => {
   const [searchValue, setSearchValue] = useState("");
   const [name, setName] = useState([]);
-  const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
     const getSearch = () => {
@@ -22,17 +21,9 @@ const Search = ({ shiny }) => {
     setSearchValue(event.target.value);
   };
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY >= 375) setIsFixed(true);
-    else setIsFixed(false);
-  });
   return (
     <>
-      <div
-        className={`parents-search ${shiny ? "list-background" : ""} ${
-          isFixed ? "parents-search-fixed" : ""
-        }`}
-      >
+      <div className={`parents-search ${shiny ? "list-background" : ""}`}>
         <input
           value={searchValue}
           onChange={handleChange}

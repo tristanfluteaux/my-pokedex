@@ -17,22 +17,25 @@
   text-decoration: none;
 }
 
+.random-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 200px;
+  position: absolute;
+  left: 50%;
+  top: 155px;
+  transform: translateX(-50%);
+  border: none;
+  background: transparent;
+}
+
 .parents-search {
-  /* height: 70px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3));
-}
-
-.parents-search-fixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding-bottom: 100px;
-  z-index: 1;
 }
 
 #search-input {

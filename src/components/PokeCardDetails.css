@@ -3,7 +3,7 @@
   text-align: center;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 650px 200px 50px;
+  grid-template-rows: 650px auto 50px;
   grid-template-areas:
     "infos stats"
     "evo evo"
