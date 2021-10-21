@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
+import NavMenu from "./Menu/NavMenu";
 
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavMenu from "./Menu/NavMenu";
 
 const Header = () => {
   const getRandomPokemonId = () => {
@@ -21,7 +21,6 @@ const Header = () => {
           (window.location.href = "/pokemon/" + getRandomPokemonId())
         }
       ></button>
-      <BasicMenu />
     </div>
   );
 };
