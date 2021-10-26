@@ -14,50 +14,76 @@ import Troll from "./components/Troll/Troll";
 import TrollEnter from "./components/Troll/TrollEnter";
 
 function App() {
+  const [pokemon, setPokemon] = useState();
   const [loading, setLoading] = useState(true);
-  const [pokemonArray, setPokemonArray] = useState();
-  const [pokemonData, setPokemonData] = useState();
   const [favorites, toogleFavorite] = useFavoris();
 
   useEffect(() => {
+    const promiseArray = [];
+    const data = [];
+
     const getPokemon = async () => {
-      await axios
-        .get("https://pokeapi.co/api/v2/pokemon?limit=2000")
-        .then(async (res) => {
-          await setPokemonArray(res.data.results);
-        });
+      return await axios.get("https://pokeapi.co/api/v2/pokemon?limit=2000");
     };
-    getPokemon();
+
+    const getPromise = async (url) => {
+      return await promiseArray.push(axios.get(url));
+    };
+
+    const getPromiseArray = async (pokemonArray) => {
+      return Promise.all(
+        pokemonArray.map((pokemon) => getPromise(pokemon.url))
+      );
+    };
+
+    getPokemon().then((res) => {
+      getPromiseArray(res.data.results)
+        .then(async () => {
+          await Promise.all(
+            promiseArray.map((promise) =>
+              promise.then((res) => data.push(res.data))
+            )
+          );
+        })
+        .then(() => data.sort((a, b) => a.id - b.id))
+        .then(async () => {
+          promiseArray.splice(0, promiseArray.length);
+          await Promise.all(data.map((data) => getPromise(data.species.url)));
+        })
+        .then(async () => {
+          await Promise.all(
+            promiseArray.map((promise) =>
+              promise.then((res) => {
+                data[res.data.id - 1].species = res.data;
+              })
+            )
+          );
+        })
+        .then(async () => {
+          promiseArray.splice(0, promiseArray.length);
+          await Promise.all(
+            data.map(
+              (data) =>
+                data.species.evolution_chain &&
+                getPromise(data.species.evolution_chain.url)
+            )
+          );
+        })
+        .then(async () => {
+          promiseArray.map((promise) =>
+            promise.then((res) => {
+              data[res.data.id - 1].species.evolution_chain = res.data;
+            })
+          );
+        })
+        .then(() => {
+          setPokemon(data);
+          setLoading(false);
+        });
+    });
   }, []);
 
-  useEffect(() => {
-    if (pokemonArray) {
-      const promiseArray = [];
-      const data = [];
-
-      const getPromise = async (url) => {
-        return await promiseArray.push(axios.get(url));
-      };
-
-      const getPromiseArray = async () => {
-        return Promise.all(
-          pokemonArray.map((pokemon) => getPromise(pokemon.url))
-        );
-      };
-
-      getPromiseArray().then(async () => {
-        await Promise.all(
-          promiseArray.map((promise) =>
-            promise.then((res) => data.push(res.data))
-          )
-        );
-        setPokemonData(data);
-        setLoading(false);
-      });
-    }
-  }, [pokemonArray]);
-
-  if (!loading) console.log(pokemonData);
+  if (!loading) console.log(pokemon);
 
   return (
     <div className="App">
