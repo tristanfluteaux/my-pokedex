@@ -1,35 +1,17 @@
-import axios from "axios";
 import PokeCard from "../components/PokeCard";
 import Search from "./Search";
-import Loader from "../components/Loader";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./PokeList.css";
 
-const PokeList = ({ favorites, toogleFavorite }) => {
+const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
   const [generation, setGeneration] = useState(
-    JSON.parse(localStorage.getItem("currentGeneration")) || 1
+    JSON.parse(localStorage.getItem("currentGeneration")) || "generation-i"
   );
-  const [limit, setLimit] = useState(0);
-  const [offset, setOffset] = useState(0);
-  const [list, setList] = useState();
   const [shiny, setShiny] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/generation/${generation}/`)
-      .then((result) => {
-        setOffset(result.data.pokemon_species[0].url.split("/")[6] - 1);
-        setLimit(result.data.pokemon_species.length);
-      });
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
-      .then((result) => setList(result.data.results));
-  }, [generation, offset, limit]);
 
   function setGen(genNumber) {
     if (genNumber !== generation) {
-      setList();
       setGeneration(genNumber);
       localStorage.setItem("currentGeneration", JSON.stringify(genNumber));
     }
@@ -47,13 +29,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="kanto"
           name="gen-btn"
-          checked={generation === 1}
+          checked={generation === "generation-i"}
           readOnly
         />
         <label
           htmlFor="kanto"
           className="btn gen-button"
-          onClick={() => setGen(1)}
+          onClick={() => setGen("generation-i")}
         >
           KANTO
         </label>
@@ -61,13 +43,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="johto"
           name="gen-btn"
-          checked={generation === 2}
+          checked={generation === "generation-ii"}
           readOnly
         />
         <label
           htmlFor="johto"
           className="btn gen-button"
-          onClick={() => setGen(2)}
+          onClick={() => setGen("generation-ii")}
         >
           JOHTO
         </label>
@@ -75,13 +57,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="hoenn"
           name="gen-btn"
-          checked={generation === 3}
+          checked={generation === "generation-iii"}
           readOnly
         />
         <label
           htmlFor="hoenn"
           className="btn gen-button"
-          onClick={() => setGen(3)}
+          onClick={() => setGen("generation-iii")}
         >
           HOENN
         </label>
@@ -89,13 +71,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="sinnoh"
           name="gen-btn"
-          checked={generation === 4}
+          checked={generation === "generation-iv"}
           readOnly
         />
         <label
           htmlFor="sinnoh"
           className="btn gen-button"
-          onClick={() => setGen(4)}
+          onClick={() => setGen("generation-iv")}
         >
           SINNOH
         </label>
@@ -103,13 +85,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="unys"
           name="gen-btn"
-          checked={generation === 5}
+          checked={generation === "generation-v"}
           readOnly
         />
         <label
           htmlFor="unys"
           className="btn gen-button"
-          onClick={() => setGen(5)}
+          onClick={() => setGen("generation-v")}
         >
           UNYS
         </label>
@@ -117,13 +99,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="kalos"
           name="gen-btn"
-          checked={generation === 6}
+          checked={generation === "generation-vi"}
           readOnly
         />
         <label
           htmlFor="kalos"
           className="btn gen-button"
-          onClick={() => setGen(6)}
+          onClick={() => setGen("generation-vi")}
         >
           KALOS
         </label>
@@ -131,13 +113,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="alola"
           name="gen-btn"
-          checked={generation === 7}
+          checked={generation === "generation-vii"}
           readOnly
         />
         <label
           htmlFor="alola"
           className="btn gen-button"
-          onClick={() => setGen(7)}
+          onClick={() => setGen("generation-vii")}
         >
           ALOLA
         </label>
@@ -145,13 +127,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           type="radio"
           id="galar"
           name="gen-btn"
-          checked={generation === 8}
+          checked={generation === "generation-viii"}
           readOnly
         />
         <label
           htmlFor="galar"
           className="btn gen-button"
-          onClick={() => setGen(8)}
+          onClick={() => setGen("generation-viii")}
         >
           GALAR
         </label>
@@ -163,19 +145,20 @@ const PokeList = ({ favorites, toogleFavorite }) => {
         </button>
       </div>
       <div className={`main-list ${shiny ? "list-background" : ""}`}>
-        {!list ? (
-          <Loader />
-        ) : (
-          list.map((pokemon) => (
+        {pokemon
+          .filter((pokemon) => {
+            if (pokemon.species.generation)
+              return pokemon.species.generation.name === generation;
+          })
+          .map((pokemon) => (
             <PokeCard
               key={pokemon.name}
-              {...pokemon}
+              pokemon={pokemon}
               shiny={shiny}
               favorites={favorites}
               toogleFavorite={toogleFavorite}
             />
-          ))
-        )}
+          ))}
       </div>
     </>
   );

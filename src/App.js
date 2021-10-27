@@ -70,10 +70,29 @@ function App() {
           );
         })
         .then(async () => {
-          promiseArray.map((promise) =>
-            promise.then((res) => {
-              data[res.data.id - 1].species.evolution_chain = res.data;
-            })
+          await Promise.all(
+            promiseArray.map((promise) =>
+              promise.then((res) => {
+                let evolutionData = res.data.chain;
+                if (evolutionData) {
+                  data[
+                    evolutionData.species.url.split("/")[6] - 1
+                  ].species.evolution_chain = res.data;
+                  if (evolutionData.evolves_to.length > 0) {
+                    evolutionData = evolutionData.evolves_to;
+                  } else evolutionData = null;
+                  while (evolutionData) {
+                    for (let i = 0; i < evolutionData.length; i++)
+                      data[
+                        evolutionData[i].species.url.split("/")[6] - 1
+                      ].species.evolution_chain = res.data;
+                    if (evolutionData[0].evolves_to.length > 0) {
+                      evolutionData = evolutionData[0].evolves_to;
+                    } else evolutionData = null;
+                  }
+                }
+              })
+            )
           );
         })
         .then(() => {
@@ -94,10 +113,14 @@ function App() {
         ) : (
           <Switch>
             <Route exact path="/">
-              <Home favorites={favorites} toogleFavorite={toogleFavorite} />
+              <Home
+                pokemon={pokemon}
+                favorites={favorites}
+                toogleFavorite={toogleFavorite}
+              />
             </Route>
             <Route path="/pokemon/:id">
-              <PokeDetails />
+              <PokeDetails pokemon={pokemon} />
             </Route>
             <Route exact path="/team">
               <Team favorites={favorites} toogleFavorite={toogleFavorite} />

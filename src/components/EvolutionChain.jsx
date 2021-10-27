@@ -1,36 +1,28 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import PokeCard from "./PokeCard";
 
 import "./EvolutionChain.css";
 
-const EvolutionChain = ({ pokemonSpecies }) => {
-  const [evolutionChain, setEvolutionChain] = useState();
-  const evoChain = [];
+const EvolutionChain = ({ pokemon, id }) => {
+  const evolutionChain = [];
 
-  useEffect(() => {
-    const getEvolutionData = () => {
-      axios.get(pokemonSpecies.evolution_chain.url).then((res) => {
-        let evolutionData = res.data.chain;
+  const getEvolutionData = () => {
+    let evolutionData = pokemon[id - 1].species.evolution_chain.chain;
 
-        evoChain.push([evolutionData]);
-        if (evolutionData.evolves_to.length > 0) {
-          evolutionData = evolutionData.evolves_to;
-        } else evolutionData = null;
-        while (evolutionData) {
-          const evolutionLevel = [];
-          for (let i = 0; i < evolutionData.length; i++)
-            evolutionLevel.push(evolutionData[i]);
-          evoChain.push(evolutionLevel);
-          if (evolutionData[0].evolves_to.length > 0) {
-            evolutionData = evolutionData[0].evolves_to;
-          } else evolutionData = null;
-        }
-        setEvolutionChain(evoChain);
-      });
-    };
-    if (pokemonSpecies) getEvolutionData();
-  }, [pokemonSpecies]);
+    evolutionChain.push([evolutionData]);
+    if (evolutionData.evolves_to.length > 0) {
+      evolutionData = evolutionData.evolves_to;
+    } else evolutionData = null;
+    while (evolutionData) {
+      const evolutionLevel = [];
+      for (let i = 0; i < evolutionData.length; i++)
+        evolutionLevel.push(evolutionData[i]);
+      evolutionChain.push(evolutionLevel);
+      if (evolutionData[0].evolves_to.length > 0) {
+        evolutionData = evolutionData[0].evolves_to;
+      } else evolutionData = null;
+    }
+  };
+  getEvolutionData();
 
   return (
     <div className="evo-chain">
@@ -38,14 +30,14 @@ const EvolutionChain = ({ pokemonSpecies }) => {
         evolutionChain.length > 1 &&
         evolutionChain.map((evolveLevel, index) => {
           return (
-            <>
+            <div key={"blabla" + index} className="evo-level-container">
               <div key={"evo-level" + index} className="evo-level">
                 {evolveLevel.map((evolve) => {
                   return (
                     <PokeCard
                       key={evolve.species.name}
                       name={evolve.species.name}
-                      url={evolve.species.url.replace("-species", "")}
+                      pokemon={pokemon[evolve.species.url.split("/")[6] - 1]}
                       shiny={true}
                     />
                   );
@@ -56,7 +48,7 @@ const EvolutionChain = ({ pokemonSpecies }) => {
                   &#10140;
                 </p>
               )}
-            </>
+            </div>
           );
         })}
     </div>

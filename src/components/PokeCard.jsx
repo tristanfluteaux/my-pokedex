@@ -1,9 +1,8 @@
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Alert } from '@material-ui/lab'
-import { Snackbar } from '@material-ui/core'
-import swal from 'sweetalert';
+import { Alert } from "@material-ui/lab";
+import { Snackbar } from "@material-ui/core";
+import swal from "sweetalert";
 
 import addFav from "../assets/189001.png";
 import defaultPicture from "../assets/quel_est_ce_pokemon.jpg";
@@ -21,45 +20,31 @@ const isFavorite = (id) => {
   return isFav;
 };
 
-const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
-  const [pokemon, setPokemon] = useState([]);
-  const [type, setType] = useState("");
-  const [validate, setValidate] = useState(isFavorite(url.split("/")[6]));
-  const [open, setOpen] = useState(false)
+const PokeCard = ({ pokemon, shiny, favorites, toogleFavorite }) => {
+  // const [validate, setValidate] = useState(isFavorite(url.split("/")[6]));
+  // const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    let isMounted = true;
-    axios.get(url).then((result) => {
-      if (isMounted) {
-        setPokemon(result.data);
-        setType(result.data.types[0].type.name);
-      }
-    });
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  // const handleFavoriteClick = () => {
+  //   if (validate === false || favorites.length < 6) {
+  //     toogleFavorite(name, url);
+  //     setValidate(!validate);
+  //     setOpen(!open);
+  //     // if (validate === true) {
+  //     //   // alert(`${pokemon.name} add to your team`);
+  //     // } else {
+  //     //   // alert(`${pokemon.name} remove from your team`);
+  //     // }
+  //   } else {
+  //     swal("Your team has already 6 pokemon");
+  //   }
+  // };
 
-  const handleFavoriteClick = () => {
-    if (validate === false || favorites.length < 6) {
-      toogleFavorite(name, url);
-      setValidate(!validate);
-      setOpen(!open)
-      // if (validate === true) {
-      //   // alert(`${pokemon.name} add to your team`);
-      // } else {
-      //   // alert(`${pokemon.name} remove from your team`);
-      // }
-    } else {
-      swal("Your team has already 6 pokemon");
-    } 
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
-  const handleClose = () => {
-    setOpen(false)
-  }
   return (
-    <div className={`card ${type}`}>
+    <div className={`card ${pokemon.types[0].type.name}`}>
       <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
         <h2 className="card-number">{("00" + pokemon.id).slice(-3)}</h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
@@ -70,7 +55,7 @@ const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
                 ? pokemon.sprites.front_default
                 : pokemon.sprites.front_shiny
             }
-            alt={name}
+            alt={pokemon.name}
           />
         ) : (
           <img
@@ -79,10 +64,10 @@ const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
             alt="default"
           />
         )}
-        <h2 className="card-name">{name.toUpperCase()}</h2>
+        <h2 className="card-name">{pokemon.name.toUpperCase()}</h2>
         <div className="card-bar"></div>
       </NavLink>
-      {favorites && (
+      {/* {favorites && (
         <img
           className="fav-img"
           src={validate ? addFav : isFav}
@@ -91,25 +76,25 @@ const PokeCard = ({ name, url, shiny, favorites, toogleFavorite }) => {
           onClick={handleFavoriteClick}
         />
       )}
-    <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'center'
-          }}
-          >
-          {validate ? 
-          <Alert onClose={handleClose} severity='info'>
-          {pokemon.name} remove from your team
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        {validate ? (
+          <Alert onClose={handleClose} severity="info">
+            {pokemon.name} remove from your team
           </Alert>
-          :
-          <Alert onClose={handleClose} severity='success'>
-          {pokemon.name} add to your team
+        ) : (
+          <Alert onClose={handleClose} severity="success">
+            {pokemon.name} add to your team
           </Alert>
-          }
-          </Snackbar>
+        )}
+      </Snackbar> */}
     </div>
   );
 };

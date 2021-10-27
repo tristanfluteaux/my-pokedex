@@ -4,22 +4,30 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.evo-level-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .evo-chain-arrow {
   font-size: 3rem;
   color: rgba(0, 0, 0, 0.61);
+  margin: 15px;
 }
 
 @media screen and (max-width: 600px) {
   .evo-chain {
     width: 100%;
-    margin: 0 auto;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  }
+
+  .evo-level-container {
+    flex-direction: column;
   }
 
   .evo-chain-arrow {

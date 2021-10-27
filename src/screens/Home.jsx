@@ -1,14 +1,15 @@
 import PokeList from "./PokeList";
 
-const Home = ({favorites, toogleFavorite}) => {
-    return (
-        <>
-            <PokeList 
-            favorites={favorites}
-            toogleFavorite={toogleFavorite}
-            />  
-        </>
-    )
-}
+const Home = ({ pokemon, favorites, toogleFavorite }) => {
+  return (
+    <>
+      <PokeList
+        pokemon={pokemon}
+        favorites={favorites}
+        toogleFavorite={toogleFavorite}
+      />
+    </>
+  );
+};
 
 export default Home;

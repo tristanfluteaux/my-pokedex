@@ -1,28 +1,14 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import SpritesFrontBack from "./SpritesFrontBack";
 import Types from "./Types";
 import "./PokemonInfos.css";
 
 const PokemonInfos = ({ details }) => {
-  const [text, setText] = useState("");
+  const text = details.species.flavor_text_entries
+    .find((text_entries) => text_entries.language.name === "en")
+    .flavor_text.replace(/\f|\n/g, " ")
+    .replace("POKéMON", "pokémon");
   const [isShiny, setIsShiny] = useState(false);
-
-  useEffect(() => {
-    const getText = () => {
-      axios
-        .get(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
-        .then((res) => {
-          setText(
-            res.data.flavor_text_entries
-              .find((text_entries) => text_entries.language.name === "en")
-              .flavor_text.replace(/\f|\n/g, " ")
-              .replace("POKéMON", "pokémon")
-          );
-        });
-    };
-    getText();
-  }, [details.id]);
 
   return (
     <div className="infos-container">
