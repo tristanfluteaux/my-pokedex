@@ -15,33 +15,33 @@ const isFavorite = (id) => {
   let isFav = true;
 
   favPokemon.forEach((pokemon) => {
-    if (pokemon.url.split("/")[6] === id) return (isFav = false);
+    if (pokemon.id === id) return (isFav = false);
   });
   return isFav;
 };
 
 const PokeCard = ({ pokemon, shiny, favorites, toogleFavorite }) => {
-  // const [validate, setValidate] = useState(isFavorite(url.split("/")[6]));
-  // const [open, setOpen] = useState(false);
+  const [validate, setValidate] = useState(isFavorite(pokemon.id));
+  const [open, setOpen] = useState(false);
 
-  // const handleFavoriteClick = () => {
-  //   if (validate === false || favorites.length < 6) {
-  //     toogleFavorite(name, url);
-  //     setValidate(!validate);
-  //     setOpen(!open);
-  //     // if (validate === true) {
-  //     //   // alert(`${pokemon.name} add to your team`);
-  //     // } else {
-  //     //   // alert(`${pokemon.name} remove from your team`);
-  //     // }
-  //   } else {
-  //     swal("Your team has already 6 pokemon");
-  //   }
-  // };
+  const handleFavoriteClick = () => {
+    if (validate === false || favorites.length < 6) {
+      toogleFavorite(pokemon.name, pokemon.id);
+      setValidate(!validate);
+      setOpen(!open);
+      // if (validate === true) {
+      //   // alert(`${pokemon.name} add to your team`);
+      // } else {
+      //   // alert(`${pokemon.name} remove from your team`);
+      // }
+    } else {
+      swal("Your team has already 6 pokemon");
+    }
+  };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={`card ${pokemon.types[0].type.name}`}>
@@ -67,7 +67,7 @@ const PokeCard = ({ pokemon, shiny, favorites, toogleFavorite }) => {
         <h2 className="card-name">{pokemon.name.toUpperCase()}</h2>
         <div className="card-bar"></div>
       </NavLink>
-      {/* {favorites && (
+      {favorites && (
         <img
           className="fav-img"
           src={validate ? addFav : isFav}
@@ -94,7 +94,7 @@ const PokeCard = ({ pokemon, shiny, favorites, toogleFavorite }) => {
             {pokemon.name} add to your team
           </Alert>
         )}
-      </Snackbar> */}
+      </Snackbar>
     </div>
   );
 };

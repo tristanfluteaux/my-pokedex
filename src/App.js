@@ -123,7 +123,11 @@ function App() {
               <PokeDetails pokemon={pokemon} />
             </Route>
             <Route exact path="/team">
-              <Team favorites={favorites} toogleFavorite={toogleFavorite} />
+              <Team
+                pokemon={pokemon}
+                favorites={favorites}
+                toogleFavorite={toogleFavorite}
+              />
             </Route>
             <Route exact path="/troll">
               <TrollEnter />
