@@ -48,8 +48,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="kanto"
           name="gen-btn"
           checked={generation === 1}
+          readOnly
         />
-        <label for="kanto" className="btn gen-button" onClick={() => setGen(1)}>
+        <label
+          htmlFor="kanto"
+          className="btn gen-button"
+          onClick={() => setGen(1)}
+        >
           KANTO
         </label>
         <input
@@ -57,8 +62,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="johto"
           name="gen-btn"
           checked={generation === 2}
+          readOnly
         />
-        <label for="johto" className="btn gen-button" onClick={() => setGen(2)}>
+        <label
+          htmlFor="johto"
+          className="btn gen-button"
+          onClick={() => setGen(2)}
+        >
           JOHTO
         </label>
         <input
@@ -66,8 +76,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="hoenn"
           name="gen-btn"
           checked={generation === 3}
+          readOnly
         />
-        <label for="hoenn" className="btn gen-button" onClick={() => setGen(3)}>
+        <label
+          htmlFor="hoenn"
+          className="btn gen-button"
+          onClick={() => setGen(3)}
+        >
           HOENN
         </label>
         <input
@@ -75,9 +90,10 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="sinnoh"
           name="gen-btn"
           checked={generation === 4}
+          readOnly
         />
         <label
-          for="sinnoh"
+          htmlFor="sinnoh"
           className="btn gen-button"
           onClick={() => setGen(4)}
         >
@@ -88,8 +104,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="unys"
           name="gen-btn"
           checked={generation === 5}
+          readOnly
         />
-        <label for="unys" className="btn gen-button" onClick={() => setGen(5)}>
+        <label
+          htmlFor="unys"
+          className="btn gen-button"
+          onClick={() => setGen(5)}
+        >
           UNYS
         </label>
         <input
@@ -97,8 +118,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="kalos"
           name="gen-btn"
           checked={generation === 6}
+          readOnly
         />
-        <label for="kalos" className="btn gen-button" onClick={() => setGen(6)}>
+        <label
+          htmlFor="kalos"
+          className="btn gen-button"
+          onClick={() => setGen(6)}
+        >
           KALOS
         </label>
         <input
@@ -106,8 +132,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="alola"
           name="gen-btn"
           checked={generation === 7}
+          readOnly
         />
-        <label for="alola" className="btn gen-button" onClick={() => setGen(7)}>
+        <label
+          htmlFor="alola"
+          className="btn gen-button"
+          onClick={() => setGen(7)}
+        >
           ALOLA
         </label>
         <input
@@ -115,8 +146,13 @@ const PokeList = ({ favorites, toogleFavorite }) => {
           id="galar"
           name="gen-btn"
           checked={generation === 8}
+          readOnly
         />
-        <label for="galar" className="btn gen-button" onClick={() => setGen(8)}>
+        <label
+          htmlFor="galar"
+          className="btn gen-button"
+          onClick={() => setGen(8)}
+        >
           GALAR
         </label>
         <button
