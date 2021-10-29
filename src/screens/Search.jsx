@@ -1,21 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "../components/Header.css";
 
-const Search = ({ shiny }) => {
+const Search = ({ pokemon, shiny }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [name, setName] = useState([]);
-
-  useEffect(() => {
-    const getSearch = () => {
-      axios
-        .get("https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0")
-        .then((res) => setName(res.data.results));
-    };
-    getSearch();
-  }, [searchValue]);
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
@@ -36,8 +25,7 @@ const Search = ({ shiny }) => {
         <div className="search-result">
           <ul className="result-ul">
             {searchValue &&
-              name &&
-              name
+              pokemon
                 .filter((word) => word.name.match(searchValue))
                 .sort((a, b) => {
                   return a.name < b.name ? -1 : 1;
@@ -50,10 +38,7 @@ const Search = ({ shiny }) => {
                 })
                 .map((poke) => (
                   <li key={poke.name}>
-                    <NavLink
-                      className="suggest"
-                      to={`/pokemon/${poke.url.split("/")[6]}`}
-                    >
+                    <NavLink className="suggest" to={`/pokemon/${poke.id}`}>
                       {poke.name}
                     </NavLink>
                   </li>

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert } from "@material-ui/lab";
 import { Snackbar } from "@material-ui/core";
 import swal from "sweetalert";

@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./PokeList.css";
 
 const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
+  const [type, setType] = useState("");
   const [generation, setGeneration] = useState(
     JSON.parse(localStorage.getItem("currentGeneration")) || "generation-i"
   );
@@ -23,7 +24,7 @@ const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
 
   return (
     <>
-      <Search shiny={shiny} />
+      <Search pokemon={pokemon} shiny={shiny} />
       <div className={`list-button ${shiny ? "list-background" : ""}`}>
         <input
           type="radio"
@@ -143,12 +144,37 @@ const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
         >
           SHINY
         </button>
+        <input
+          type="radio"
+          id="fire"
+          name="type-btn"
+          checked={type === "fire"}
+          readOnly
+        />
+        <label
+          htmlFor="fire"
+          className="btn gen-button"
+          onClick={() => setType(type === "fire" ? "" : "fire")}
+        >
+          FIRE
+        </label>
       </div>
       <div className={`main-list ${shiny ? "list-background" : ""}`}>
         {pokemon
           .filter((pokemon) => {
             if (pokemon.species.generation)
               return pokemon.species.generation.name === generation;
+            return false;
+          })
+          .filter((pokemon) => {
+            if (type) {
+              for (let i = 0; i < pokemon.types.length; i++) {
+                if (pokemon.types[i].type.name === type) return true;
+              }
+              return false;
+            } else {
+              return true;
+            }
           })
           .map((pokemon) => (
             <PokeCard
