@@ -46,7 +46,11 @@ const PokeCard = ({ pokemon, shiny, favorites, toogleFavorite }) => {
   return (
     <div className={`card ${pokemon.types[0].type.name}`}>
       <NavLink to={`/pokemon/${pokemon.id}`} className="card-link">
-        <h2 className="card-number">{("00" + pokemon.id).slice(-3)}</h2>
+        <h2 className="card-number">
+          {pokemon.id < 1000
+            ? ("00" + pokemon.id).slice(-3)
+            : ("0000" + pokemon.id).slice(-5)}
+        </h2>
         {pokemon && pokemon.sprites && pokemon.sprites.front_default ? (
           <img
             className="card-img"

@@ -19,17 +19,22 @@ const PokeCardDetails = ({ pokemon, id }) => {
 
   return (
     <div
-      className={`details-card details-${pokemon[id - 1].types[0].type.name}`}
+      className={`details-card details-${
+        pokemon[id >= 10001 ? id - 9103 : id - 1].types[0].type.name
+      }`}
     >
       <NavLink to={"/"}>
         <button className={`back-btn ${isFixed ? "fixed" : ""}`}>
           &#8617;
         </button>
       </NavLink>
-      <PokemonInfos details={pokemon[id - 1]} />
-      <PokemonStats stats={pokemon[id - 1].stats} />
-      <EvolutionChain pokemon={pokemon} id={id} />
-      <DetailsNavButtons pokemonId={id} />
+      <PokemonInfos details={pokemon[id >= 10001 ? id - 9102 : id - 1]} />
+      <PokemonStats stats={pokemon[id >= 10001 ? id - 9102 : id - 1].stats} />
+      <EvolutionChain pokemon={pokemon} id={id >= 10001 ? id - 9102 : id - 1} />
+      <DetailsNavButtons
+        pokemon={pokemon}
+        pokemonId={id >= 10001 ? id - 9102 : id}
+      />
     </div>
   );
 };

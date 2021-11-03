@@ -54,7 +54,13 @@ function App() {
           await Promise.all(
             promiseArray.map((promise) =>
               promise.then((res) => {
-                data[res.data.id - 1].species = res.data;
+                for (let i = 0; i < res.data.varieties.length; i++) {
+                  const pokemonId =
+                    res.data.varieties[i].pokemon.url.split("/")[6] - 1;
+                  data[
+                    pokemonId >= 10000 ? pokemonId - 9103 : pokemonId
+                  ].species = res.data;
+                }
               })
             )
           );

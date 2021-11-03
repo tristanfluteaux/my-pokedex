@@ -7,7 +7,7 @@ import "./PokeList.css";
 const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
   const [type, setType] = useState("");
   const [generation, setGeneration] = useState(
-    JSON.parse(localStorage.getItem("currentGeneration")) || "generation-i"
+    JSON.parse(localStorage.getItem("currentGeneration")) || ""
   );
   const [shiny, setShiny] = useState(true);
 
@@ -25,7 +25,18 @@ const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
   return (
     <>
       <Search pokemon={pokemon} shiny={shiny} />
-      <div className={`list-button ${shiny ? "list-background" : ""}`}>
+      <label for="pet-select">Generations:</label>
+      <select name="pets" id="pet-select">
+        <option value="">All generations</option>
+        <option value="generation-i">1</option>
+        <option value="generation-ii">2</option>
+        <option value="generation-iii">3</option>
+        <option value="generation-iv">4</option>
+        <option value="generation-v">5</option>
+        <option value="generation-vi">6</option>
+        <option value="generation-vii">7</option>
+      </select>
+      {/* <div className={`list-button ${shiny ? "list-background" : ""}`}>
         <input
           type="radio"
           id="kanto"
@@ -158,13 +169,16 @@ const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
         >
           FIRE
         </label>
-      </div>
+      </div> */}
       <div className={`main-list ${shiny ? "list-background" : ""}`}>
         {pokemon
           .filter((pokemon) => {
-            if (pokemon.species.generation)
-              return pokemon.species.generation.name === generation;
-            return false;
+            if (generation) {
+              if (pokemon.species.generation)
+                return pokemon.species.generation.name === generation;
+              return false;
+            }
+            return true;
           })
           .filter((pokemon) => {
             if (type) {
@@ -172,9 +186,8 @@ const PokeList = ({ pokemon, favorites, toogleFavorite }) => {
                 if (pokemon.types[i].type.name === type) return true;
               }
               return false;
-            } else {
-              return true;
             }
+            return true;
           })
           .map((pokemon) => (
             <PokeCard

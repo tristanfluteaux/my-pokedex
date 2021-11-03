@@ -6,7 +6,7 @@ const EvolutionChain = ({ pokemon, id }) => {
   const evolutionChain = [];
 
   const getEvolutionData = () => {
-    let evolutionData = pokemon[id - 1].species.evolution_chain.chain;
+    let evolutionData = pokemon[id].species.evolution_chain.chain;
 
     evolutionChain.push([evolutionData]);
     if (evolutionData.evolves_to.length > 0) {
