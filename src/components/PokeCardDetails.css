@@ -3,7 +3,7 @@
   text-align: center;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 650px auto 50px;
+  grid-template-rows: 650px auto 80px;
   grid-template-areas:
     "infos stats"
     "evo evo"
@@ -52,11 +52,13 @@
 .nav-buttons {
   grid-area: btns;
   width: 100%;
+  position: relative;
 }
 
 .nav-btn {
+  top: 50%;
   position: absolute;
-  width: 100px;
+  width: 135px;
   height: 2.5em;
   font-family: "pokemonGB";
   color: black;

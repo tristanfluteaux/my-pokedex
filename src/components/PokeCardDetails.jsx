@@ -28,12 +28,12 @@ const PokeCardDetails = ({ pokemon, id }) => {
           &#8617;
         </button>
       </NavLink>
-      <PokemonInfos details={pokemon[id >= 10001 ? id - 9102 : id - 1]} />
-      <PokemonStats stats={pokemon[id >= 10001 ? id - 9102 : id - 1].stats} />
-      <EvolutionChain pokemon={pokemon} id={id >= 10001 ? id - 9102 : id - 1} />
+      <PokemonInfos details={pokemon[id >= 10001 ? id - 9103 : id - 1]} />
+      <PokemonStats stats={pokemon[id >= 10001 ? id - 9103 : id - 1].stats} />
+      <EvolutionChain pokemon={pokemon} id={id >= 10001 ? id - 9103 : id - 1} />
       <DetailsNavButtons
         pokemon={pokemon}
-        pokemonId={id >= 10001 ? id - 9102 : id}
+        pokemonId={id >= 10001 ? id - 9103 : id - 1}
       />
     </div>
   );

@@ -9,7 +9,7 @@ const TeamList = ({ pokemon, favorites, toogleFavorite }) => {
         favorites.map((poke) => (
           <PokeCard
             key={poke.name}
-            pokemon={pokemon[poke.id]}
+            pokemon={pokemon[poke.id - 1]}
             shiny={true}
             favorites={favorites}
             toogleFavorite={toogleFavorite}

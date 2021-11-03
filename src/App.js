@@ -58,7 +58,7 @@ function App() {
                   const pokemonId =
                     res.data.varieties[i].pokemon.url.split("/")[6] - 1;
                   data[
-                    pokemonId >= 10000 ? pokemonId - 9103 : pokemonId
+                    pokemonId >= 10000 ? pokemonId - 9102 : pokemonId
                   ].species = res.data;
                 }
               })
