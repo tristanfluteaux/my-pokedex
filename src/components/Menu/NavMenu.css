@@ -15,7 +15,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    animation: 1s slide-up;
+    animation:  1s slide-up ;
     color: white;
     font-size: 1.5em;
     z-index: 25;
@@ -72,6 +72,15 @@
     to {
       margin-top: 0%;
       height: 100vh;
+    }
+  }
+  @keyframes slide-down {
+    from {
+      height: 100vh;
+    }
+    to {
+      margin-top: 0%;
+      height: 0;
     }
   }
   

@@ -17,7 +17,7 @@ const Search = ({ pokemon, shiny }) => {
           value={searchValue}
           onChange={handleChange}
           type="text"
-          placeholder="Search a Pokemon ?"
+          placeholder="Search a Pokémon ?"
           id="search-input"
           autoComplete="off"
         />
