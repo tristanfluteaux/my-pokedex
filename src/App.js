@@ -1,17 +1,15 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./screens/Home";
 import PokeDetails from "./screens/PokeDetails";
 import Team from "./screens/Team";
 import useFavoris from "./components/useFavoris";
-import Footer from "./components/Footer";
 
+import snorlax from './assets/snorlax-gif.gif'
 import "./App.css";
-import { useEffect } from "react";
-import axios from "axios";
-import { useState } from "react";
-import Troll from "./components/Troll/Troll";
-import TrollEnter from "./components/Troll/TrollEnter";
 
 function App() {
   const [pokemon, setPokemon] = useState();
@@ -108,14 +106,15 @@ function App() {
     });
   }, []);
 
-  if (!loading) console.log(pokemon);
-
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
         {loading ? (
-          <p>loading...</p>
+          <div style={{display:'flex', flexDirection:'column', alignItems: 'center', backgroundColor:'white'}}>
+            <h2 style={{fontSize: '60px', fontFamily: 'pokemonGB', paddingBottom:'30px'}}>Loading...</h2>
+          <img src={snorlax} alt='snorlax gif'/>
+          </div>
         ) : (
           <Switch>
             <Route exact path="/">
@@ -134,12 +133,6 @@ function App() {
                 favorites={favorites}
                 toogleFavorite={toogleFavorite}
               />
-            </Route>
-            <Route exact path="/troll">
-              <TrollEnter />
-            </Route>
-            <Route exact path="/trollreal">
-              <Troll />
             </Route>
           </Switch>
         )}

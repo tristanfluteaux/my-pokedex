@@ -51,7 +51,11 @@ body {
 
 .gen-button {
   background: linear-gradient(165deg, grey, white, grey);
-  margin-top: 8px;
+  margin: 10px;
+}
+
+.type-button {
+  margin: 10px;
 }
 
 .shiny-button {

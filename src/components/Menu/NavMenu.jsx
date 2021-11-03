@@ -18,9 +18,6 @@ const NavMenu = () => {
             <NavLink onClick={handleClick} to='/team'>
               Team
             </NavLink>
-            <NavLink onClick={handleClick} to='/troll'>
-              Troll
-            </NavLink>
           </div>
         )}
   
